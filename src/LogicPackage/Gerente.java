@@ -1,6 +1,9 @@
 
-package vrjc;
+package LogicPackage;
 
+/**
+ * This file contains the class Gerente
+ */
 public class Gerente {
     
     private String Nombre;

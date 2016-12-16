@@ -1,6 +1,9 @@
 
-package vrjc;
+package LogicPackage;
 
+/**
+ * This file contains the class Trabajador
+ */
 public class Trabajador {
     
     private String Nombre;
