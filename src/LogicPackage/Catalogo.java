@@ -19,28 +19,32 @@ public class Catalogo implements Variables {
     private void generarProductos() {
         
         //REJAS
-        anadirProducto(REJA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(REJA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(REJA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(REJA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(REJA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
+        anadirProducto(REJA, "Reja", "Reja con 30x60", 50, 14, 40, 60);
+        anadirProducto(REJA, "Reja", "Reja con 50x60", 55, 15, 50, 60);
+        anadirProducto(REJA, "Reja", "Reja con 90x60", 60, 17, 90, 60);
+        anadirProducto(REJA, "Reja", "Reja con 150x180", 100, 20, 150, 180);
+        anadirProducto(REJA, "Reja", "Reja con 215x260", 120, 35, 215, 260);
+        anadirProducto(REJA, "Reja", "Reja con 215x260", 140, 40, 260, 250);
         
         //VENTANAS
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        anadirProducto(VENTANA, "Pieza", "Reja con 30x60", 50, 20, 30, 60);
-        
-        
-        
+        anadirProducto(VENTANA, "Ventana", "Ventana con 30x60", 50, 14, 40, 60);
+        anadirProducto(VENTANA, "Ventana", "Ventana con 50x60", 55, 15, 50, 60);
+        anadirProducto(VENTANA, "Ventana", "Ventana con 90x60", 60, 17, 90, 60);
+        anadirProducto(VENTANA, "Ventana", "Ventana con 150x180", 100, 20, 150, 180);
+        anadirProducto(VENTANA, "Ventana", "Ventana con 215x260", 120, 35, 215, 260);
+        anadirProducto(VENTANA, "Ventana", "Ventana con 215x260", 140, 40, 260, 250);
+               
         //PIEZAS
-        
+        anadirProducto(PIEZA, "Pieza", "Pieza con 30x60", 50, 14, 40, 60);
+        anadirProducto(PIEZA, "Pieza", "Pieza con 50x60", 55, 15, 50, 60);
+        anadirProducto(PIEZA, "Pieza", "Pieza con 90x60", 60, 17, 90, 60);
+        anadirProducto(PIEZA, "Pieza", "Pieza con 150x180", 100, 20, 150, 180);
+        anadirProducto(PIEZA, "Pieza", "Pieza con 215x260", 120, 35, 215, 260);
+        anadirProducto(PIEZA, "Pieza", "Pieza con 215x260", 140, 40, 260, 250);
+                
     }
     
-    public boolean anadirProducto(String tipo, String nombre, String description, 
-            double precioVenta, double precioCompra, double alto, double ancho) {
+    public boolean anadirProducto(String tipo, String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho) {
         
         Producto obj = null;
 
@@ -49,7 +53,7 @@ public class Catalogo implements Variables {
         } else if (tipo.equalsIgnoreCase(VENTANA)) {
             obj = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
         } else if (tipo.equalsIgnoreCase(PIEZA)) {
-            //obj = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+            obj = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
         }
 
         if (obj == null) {
