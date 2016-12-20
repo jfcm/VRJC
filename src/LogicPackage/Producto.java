@@ -79,12 +79,14 @@ public class Producto {
         this.ancho = ancho;
     }
     
-    public void calcularPrecio(){
-        
+    public double calcularPrecio(){
+     
+        return 0;
     }
     
-    public void calcularBeneficio(){
+    public double calcularBeneficio(){
         
+        return 0;
     }
     
 }
