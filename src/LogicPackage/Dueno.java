@@ -6,10 +6,9 @@
 package LogicPackage;
 
 /**
- *
- * @author joaom
+ * This file contains the class Dueno
  */
-public class Dueno extends Persona{
+public class Dueno extends Persona {
    
     public Dueno(String nombre, String apelidos, String usuario, String password)
     {

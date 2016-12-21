@@ -2,7 +2,6 @@
 package LogicPackage;
 
 /**
- * 
  *  This file contains the class Pieza
  */
 public class Pieza extends Producto {
