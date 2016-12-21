@@ -4,7 +4,7 @@ package LogicPackage;
 /**
  * This file contains the class Producto
  */
-public abstract class Producto {
+public abstract class Producto implements Variables {
 
     private String nombre;
     private String description;
@@ -80,13 +80,16 @@ public abstract class Producto {
     }
     
     public double calcularPrecio(){
-     
+        if(alto >= 30 && alto <= 300 && ancho >= 30 && ancho <= 300){
+            if(alto % 5 == 0 && ancho % 5 == 0){
+                return precioVenta;
+            }
+        }
         return 0;
     }
     
     public double calcularBeneficio(){
-        
-        return 0;
+        return precioVenta - precioCompra;
     }
     
 }

@@ -14,12 +14,10 @@ public class RejaaMedida extends RejaPreconfigurada {
     }
 
     public void cambiarAncho(){
-        super.setInstalada(true);
         super.setAncho(nuevoAncho);
     }
     
     public void cambiarAlto(){
-        super.setInstalada(true);
         super.setAlto(nuevoAlto);
     }
     

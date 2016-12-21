@@ -43,41 +43,12 @@ public class RejaPreconfigurada extends Producto {
     
     @Override
     public double calcularPrecio(){
-               
-        if(super.getAlto() >= 30 && super.getAlto() <= 120 && super.getAncho() >= 30 && super.getAncho() <= 120){
-            if(super.getAlto() % 5 == 0 && super.getAncho() % 5 == 0){
-                if(instalada == true){
-                    precioInstalacion = super.getPrecioVenta() + (super.getPrecioVenta() * 0.10);
-                }
-                else{
-                    precioInstalacion = super.getPrecioVenta();
-                }
-            }
+        if(instalada == true){
+            return super.calcularPrecio() + precioInstalacion;
         }
-        
-        if(super.getAlto() > 120 && super.getAlto() <= 210 && super.getAncho() > 120 && super.getAncho() <= 210){
-            if(super.getAlto() % 5 == 0 && super.getAncho() % 5 == 0){
-                if(instalada == true){
-                    precioInstalacion = super.getPrecioVenta() + (super.getPrecioVenta() * 0.10);
-                }
-                else{
-                    precioInstalacion = super.getPrecioVenta();
-                }
-            }
+        else{
+            return super.calcularPrecio();
         }
-        
-        if(super.getAlto() > 210 && super.getAlto() <= 300 && super.getAncho() > 210 && super.getAncho() <= 300){
-            if(super.getAlto() % 5 == 0 && super.getAncho() % 5 == 0){
-                if(instalada == true){
-                    precioInstalacion = super.getPrecioVenta() + (super.getPrecioVenta() * 0.10);
-                }
-                else{
-                    precioInstalacion = super.getPrecioVenta();
-                }
-            }
-        }
-        
-        return precioInstalacion;
     }
     
 }
