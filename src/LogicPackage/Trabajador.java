@@ -4,51 +4,27 @@ package LogicPackage;
 /**
  * This file contains the class Trabajador
  */
-public class Trabajador {
+public class Trabajador extends Persona{
     
-    private String Nombre;
-    private String Apelido;
-    private float Saldo;
+    private float Sueldo;
     
-    public Trabajador(){
-        Nombre = null;
-        Apelido = null;
-        Saldo = 0;
+    public Trabajador(String nombre, String apelidos, String usuario, String password)
+    {
+        super(nombre, apelidos, usuario, password);
+        this.Sueldo = 0;
     }
     
-    public Trabajador(String Nombre, String Apelido, float Saldo){
-        this.Nombre = Nombre;
-        this.Apelido = Apelido;
-        this.Saldo = Saldo;        
+    public Trabajador()
+    {
+        super();
     }
-    
-    public String getNombre(){
-        return Nombre;
+
+    public float getSueldo(){
+        return Sueldo;
     }
-        
-    public String getApelido(){
-        return Apelido;
-    }
-    
-    public float getSaldo(){
-        return Saldo;
-    }
-            
-    public void setNombre(String Nombre){
-        this.Nombre = Nombre;
-    }        
-    
-    public void setApelido(String Apelido){
-        this.Apelido = Apelido;
-    }           
-            
+                    
     public void setSaldo(int Saldo){
-        this.Saldo = Saldo;
+        this.Sueldo = Sueldo;
     }   
-    
-    @Override
-    public String toString(){
-        return ("Nombre: " + Nombre + "\nApelido: " + Apelido + "\nSaldo: " + Saldo);
-    }    
     
 }
