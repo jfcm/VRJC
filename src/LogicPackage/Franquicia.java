@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * This file contains the class Franquicia
  */
 public class Franquicia {
+    
     private String Nombre;
     private String Direccion;
     private String horaApertura;
