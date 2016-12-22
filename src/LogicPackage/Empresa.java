@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * This file contains the class Empresa
  */
 public class Empresa {
-    public String nombre;
-    public ArrayList<Franquicia> franq;
-    public Gerente ger;
+    private String nombre;
+    private ArrayList<Franquicia> franq;
+    private Gerente ger;
     
     public Empresa()
     {
