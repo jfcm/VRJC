@@ -4,7 +4,7 @@ package LogicPackage;
 /**
  * This file contains the class Trabajador
  */
-public class Trabajador extends Persona {
+public class Trabajador extends Persona{
     
     private float Sueldo;
     
@@ -23,7 +23,7 @@ public class Trabajador extends Persona {
         return Sueldo;
     }
                     
-    public void setSaldo(int Sueldo){
+    public void setSaldo(int Saldo){
         this.Sueldo = Sueldo;
     }   
     

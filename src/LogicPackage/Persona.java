@@ -4,9 +4,9 @@ package LogicPackage;
 /**
  * This file contains the class Persona
  */
-public class Persona {
+public abstract class Persona {
     private String nombre;
-    private String apelidos;
+    private String apelido;
     private String usuario;
     private String password;
     
@@ -15,12 +15,12 @@ public class Persona {
         this.nombre = null;
         this.password = null;
         this.usuario = null;
-        this.apelidos = null;
+        this.apelido = null;
     }
     
-    public Persona(String nombre, String password, String usuario, String apelidos)
+    public Persona(String nombre, String password, String usuario, String apelido)
     {
-        this.apelidos = apelidos;
+        this.apelido = apelido;
         this.nombre = nombre;
         this.password = password;
         this.usuario = usuario;
@@ -31,22 +31,22 @@ public class Persona {
     }
         
     public String getApelido(){
-        return apelidos;
+        return apelido;
     }
             
     public void setNombre(String Nombre){
         this.nombre = Nombre;
     }        
     
-    public void setApelido(String Apelido){
-        this.apelidos = Apelido;
+    public void setApelido(String apelido){
+        this.apelido = apelido;
     }           
     
     public String getUsername(){
         return usuario;
     }
             
-    public void getUsername(String username){
+    public void setUsername(String username){
         this.usuario = username;
     }        
     
@@ -55,9 +55,9 @@ public class Persona {
         return password;
     }
     
-    public void setPassword(String Password)
+    public void setPassword(String password)
     {
-        this.password = Password;
+        this.password = password;
     }
     
 }

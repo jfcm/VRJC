@@ -15,18 +15,22 @@ public class Franquicia {
     private float ventas_totales;
     private Dueno dueno;
     private ArrayList<Trabajador> lista_trabajadores;
+    private Catalogo cat;
     
     public Franquicia(){
-        
         dueno = new Dueno("João", "Piedade", "joao_piedade", "913037795");
         lista_trabajadores = new ArrayList<>();
         Nombre = null;
         Direccion = null;
         horaApertura = null;
         horaCierre = null;
+        cat = new Catalogo();
+        generarTrabajadores();
     }
     
-    public Franquicia(String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, float ventas_totales){
+    public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, float ventas_totales){
+        this.dueno = dueno;
+        this.lista_trabajadores = l;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.horaApertura = horaApertura; 
@@ -35,6 +39,16 @@ public class Franquicia {
         this.ventas_totales = ventas_totales;
     }
     
+    private void generarTrabajadores() {
+        Trabajador t;
+        t = new Trabajador("Jorge", "Martins", "jorge", "123");
+        lista_trabajadores.add(t);
+        t = new Trabajador("João", "Piedade", "joao", "123");
+        lista_trabajadores.add(t);
+        t = new Trabajador("Jovana", "Milozhevic", "jovana", "123");
+        lista_trabajadores.add(t);
+    }
+     
     public int getTOTAL_produtos_vendidos()
     {
         return n_total_p_vendidos;
@@ -79,7 +93,35 @@ public class Franquicia {
         this.horaCierre = horaCierre;
     } 
             
- 
+    public void setDueno(Dueno dueno)
+    {
+        this.dueno = dueno;
+    }
+    
+    public Dueno getDueno()
+    {
+        return dueno;
+    }
+    
+    public void setCatalogo(Catalogo cat)
+    {
+        this.cat = cat;
+    }
+    
+    public Catalogo getCatalogo()
+    {
+        return cat;
+    }
+    
+    public void setTrabajador(ArrayList<Trabajador> lista_trabajadores)
+    {
+        this.lista_trabajadores = lista_trabajadores;
+    }
+    
+    public ArrayList<Trabajador> getLTrab()
+    {
+        return lista_trabajadores;
+    }
     
     public String getNombreFranquicia()
     {
@@ -110,7 +152,7 @@ public class Franquicia {
         lista_trabajadores.get(id).setPassword(password);
         lista_trabajadores.get(id).setApelido(apelidos);
         
-        return false;
+        return true;
     }
     
     public boolean darBajaTrabajador(String usuario)
@@ -135,17 +177,15 @@ public class Franquicia {
         
         lista_trabajadores.remove(id);
         
-        return false;
+        return true;
     }
     
     public boolean darAltaTrabajador(Trabajador trab)
     {
-        int tam = lista_trabajadores.size();
         
         lista_trabajadores.add(trab);
         
-        return false;
+        return true;
     }
-    
     
 }

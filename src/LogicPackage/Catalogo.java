@@ -71,4 +71,17 @@ public class Catalogo implements Variables {
         return true;
     }
     
+    
+    public ArrayList<Producto> buscarProducto(String nombreProducto){
+        ArrayList<Producto> buscaProduto = new ArrayList<>();
+       
+        for(Producto p : listaproductos){
+            if(p.getNombre().equals(nombreProducto)){
+                buscaProduto.add(p);
+            }
+        } 
+
+        return buscaProduto;
+    }
+    
 }
