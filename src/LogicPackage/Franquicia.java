@@ -50,12 +50,12 @@ public class Franquicia {
         lista_trabajadores.add(t);
     }
      
-    public int getTOTAL_produtos_vendidos()
+    public int getTotalProdutosVendidos()
     {
         return n_total_p_vendidos;
     }
     
-    public float getToAL_ventas()
+    public float getTotal_ventas()
     {
         return ventas_totales;
     }
