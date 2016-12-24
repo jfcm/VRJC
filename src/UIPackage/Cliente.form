@@ -28,10 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -41,53 +38,57 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="128" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="bTrabajador" pref="174" max="32767" attributes="0"/>
-                      <Component id="bDueno" max="32767" attributes="0"/>
-                      <Component id="bGerente" max="32767" attributes="0"/>
-                      <Component id="bCliente" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="bCatalogo" max="32767" attributes="0"/>
+                      <Component id="bBuscarProducto" max="32767" attributes="0"/>
+                      <Component id="bPedirConfiguracion" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="bRetorno" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Component id="bGerente" min="-2" pref="45" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="bDueno" min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="bCatalogo" min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Component id="bBuscarProducto" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bTrabajador" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="bPedirConfiguracion" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bCliente" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <Component id="bRetorno" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="bGerente">
+        <Component class="javax.swing.JButton" name="bCatalogo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gerente"/>
+            <Property name="text" type="java.lang.String" value="C&#xe1;talogo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="bDueno">
+        <Component class="javax.swing.JButton" name="bBuscarProducto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Due&#xf1;o"/>
+            <Property name="text" type="java.lang.String" value="Buscar Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="bTrabajador">
+        <Component class="javax.swing.JButton" name="bPedirConfiguracion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Trabajador"/>
+            <Property name="text" type="java.lang.String" value="Pedir Configuraci&#xf3;n Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="bCliente">
+        <Component class="javax.swing.JButton" name="bRetorno">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cliente"/>
+            <Property name="text" type="java.lang.String" value="Retorno"/>
           </Properties>
         </Component>
       </SubComponents>
