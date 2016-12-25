@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UIPackage;
 
-/**
- *
- * @author Jovana
- */
-public class Trabajador extends javax.swing.JFrame {
+public class Trabajador_Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Trabajador
      */
-    public Trabajador() {
+    public Trabajador_Menu() {
         initComponents();
+        setTitle("Ventanas y Rejas José Cándido - Trabajador");
     }
 
     /**
@@ -42,6 +35,11 @@ public class Trabajador extends javax.swing.JFrame {
         bConfigurarProducto.setText("Configurar Producto");
 
         bRetorno.setText("Retorno");
+        bRetorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRetornoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,6 +86,12 @@ public class Trabajador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bRetornoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -105,20 +109,21 @@ public class Trabajador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Trabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Trabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Trabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Trabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Trabajador().setVisible(true);
+                new Trabajador_Menu().setVisible(true);
             }
         });
     }

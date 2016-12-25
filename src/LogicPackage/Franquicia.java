@@ -119,7 +119,7 @@ public class Franquicia {
         this.lista_trabajadores = lista_trabajadores;
     }
     
-    public ArrayList<Trabajador> getLTrab()
+    public ArrayList<Trabajador> getListTrabajadores()
     {
         return lista_trabajadores;
     }

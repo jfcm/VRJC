@@ -8,15 +8,9 @@ public class Trabajador extends Persona {
     
     private float Sueldo;
     
-    public Trabajador(String nombre, String apelidos, String usuario, String password)
-    {
+    public Trabajador(String nombre, String apelidos, String usuario, String password){
         super(nombre, apelidos, usuario, password);
         this.Sueldo = 0;
-    }
-    
-    public Trabajador()
-    {
-        super();
     }
 
     public float getSueldo(){
@@ -27,4 +21,4 @@ public class Trabajador extends Persona {
         this.Sueldo = Sueldo;
     }   
     
-}
+ }

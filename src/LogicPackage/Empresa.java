@@ -7,22 +7,25 @@ import java.util.ArrayList;
  * This file contains the class Empresa
  */
 public class Empresa {
+    
     private String nombre;
-    private ArrayList<Franquicia> franq;
-    private Gerente ger;
+    private ArrayList<Franquicia> franquicias;
+    private Gerente gerente;
     
     public Empresa()
     {
         this.nombre = null;
-        this.franq = new ArrayList<>();
-        ger = new Gerente("Jovana", "milozevic", "jovana_mil", "913037795");
+        this.franquicias = new ArrayList<>();
+        gerente = new Gerente("Jovana", "milozevic", "jovana_mil", "913037795");
+        Franquicia f = new Franquicia();
+        franquicias.add(f);
     }
     
-    public Empresa(ArrayList<Franquicia> l, String nombre, Gerente g)
+    public Empresa(ArrayList<Franquicia> franquicias, String nombre, Gerente gerente)
     {
-        this.franq = l;
+        this.franquicias = franquicias;
         this.nombre = nombre;
-        this.ger = g;
+        this.gerente = gerente;
     }
     
     public String getNombre()
@@ -35,12 +38,16 @@ public class Empresa {
         this.nombre = nombre;
     }
     
+    public ArrayList<Franquicia> getFranquicias(){
+        return franquicias;
+    }
+    
     public boolean darBajaF(String nombre)
     {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(nombre))
             {
@@ -55,7 +62,7 @@ public class Empresa {
             return false;
         }
         
-        franq.remove(id);
+        franquicias.remove(id);
         
         return true;
     }
@@ -65,7 +72,7 @@ public class Empresa {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(Nombre_fr))
             {
@@ -80,9 +87,9 @@ public class Empresa {
             return false;
         }
         
-        franq.get(id).setDireccion(Direccion);
-        franq.get(id).setHorarioApertura(horaApertura);
-        franq.get(id).setHorarioCierre(horaCierre);
+        franquicias.get(id).setDireccion(Direccion);
+        franquicias.get(id).setHorarioApertura(horaApertura);
+        franquicias.get(id).setHorarioCierre(horaCierre);
        
         return true;
     }
@@ -90,7 +97,7 @@ public class Empresa {
     public boolean darAltaFranq(Franquicia f)
     {
         
-        franq.add(f);
+        franquicias.add(f);
         
         return true;
     }
@@ -100,7 +107,7 @@ public class Empresa {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(nombre_franq))
             {
@@ -115,9 +122,9 @@ public class Empresa {
             return false;
         }
         
-        franq.get(id).getDueno().setApelido(apelidos);
-        franq.get(id).getDueno().setPassword(password);
-        franq.get(id).getDueno().setNombre(nombre);
+        franquicias.get(id).getDueno().setApelido(apelidos);
+        franquicias.get(id).getDueno().setPassword(password);
+        franquicias.get(id).getDueno().setNombre(nombre);
         
         return true;
     }
@@ -127,7 +134,7 @@ public class Empresa {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(nombre_franq))
             {
@@ -142,7 +149,7 @@ public class Empresa {
             return false;
         }
         
-        franq.get(id).setDueno(null);
+        franquicias.get(id).setDueno(null);
         
         return true;
     }
@@ -153,7 +160,7 @@ public class Empresa {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(nombre_franq))
             {
@@ -168,12 +175,12 @@ public class Empresa {
             return false;
         }
         
-        if(franq.get(id).getDueno() != null)
+        if(franquicias.get(id).getDueno() != null)
         {
             darBajaDueno(nombre_franq);
         }
             
-        franq.get(id).setDueno(d);
+        franquicias.get(id).setDueno(d);
         
         return true;
     }
@@ -183,7 +190,7 @@ public class Empresa {
         int flag = 0;
         int id = 0;
         
-        for(Franquicia t : franq)
+        for(Franquicia t : franquicias)
         {
             if(t.getNombre().equals(nombre_franq))
             {
@@ -198,6 +205,6 @@ public class Empresa {
             return null;
         }
         
-        return franq.get(id).getCatalogo();
+        return franquicias.get(id).getCatalogo();
     }
 }

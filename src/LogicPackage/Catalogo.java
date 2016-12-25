@@ -12,7 +12,6 @@ public class Catalogo implements Variables {
     
     public Catalogo(){
         listaproductos = new ArrayList<>();
-        
         generarProductos();
     }
 
@@ -42,6 +41,10 @@ public class Catalogo implements Variables {
         anadirProducto(PIEZA, "Pieza", "Pieza con 215x260", 120, 35, 215, 260);
         anadirProducto(PIEZA, "Pieza", "Pieza con 215x260", 140, 40, 260, 250);
                 
+    }
+    
+    public ArrayList<Producto> getListaProductos(){
+        return listaproductos;
     }
     
     public boolean anadirProducto(String tipo, String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho) {
