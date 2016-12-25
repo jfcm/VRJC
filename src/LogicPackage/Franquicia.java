@@ -16,11 +16,13 @@ public class Franquicia {
     private float ventas_totales;
     private Dueno dueno;
     private ArrayList<Trabajador> lista_trabajadores;
+    private ArrayList<Producto> compras;
     private Catalogo cat;
     
     public Franquicia(){
         dueno = new Dueno("João", "Piedade", "joao_piedade", "913037795");
         lista_trabajadores = new ArrayList<>();
+        compras = new ArrayList<>();
         Nombre = "VRJC";
         Direccion = "Madrid";
         horaApertura = "09:00";
@@ -40,6 +42,7 @@ public class Franquicia {
         this.horaCierre = horaCierre; 
         this.n_total_p_vendidos = n_total_p_vendidos;
         this.ventas_totales = ventas_totales;
+        compras = new ArrayList<>();
     }
     
     private void generarTrabajadores() {
@@ -113,6 +116,16 @@ public class Franquicia {
     public Catalogo getCatalogo()
     {
         return cat;
+    }
+    
+    public void setCompras(ArrayList<Producto> compras)
+    {
+        this.compras = compras;
+    }
+    
+    public ArrayList<Producto> getCompras()
+    {
+        return compras;
     }
     
     public void setTrabajador(ArrayList<Trabajador> lista_trabajadores)
