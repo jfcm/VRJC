@@ -1,8 +1,17 @@
 
 package UIPackage;
 
+import LogicPackage.Empresa;
+import LogicPackage.Franquicia;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 public class Gerente_ModificarDatos extends javax.swing.JFrame {
 
+    ArrayList<Franquicia> franquicias;
+    DefaultListModel<String> model;
+    Empresa empresa;
+    
     /**
      * Creates new form Gerente_ModificarDatos
      */
@@ -10,7 +19,27 @@ public class Gerente_ModificarDatos extends javax.swing.JFrame {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Gerente");
     }
+    
+    public Gerente_ModificarDatos(Empresa empresa) {
+        setTitle("Ventanas y Rejas José Cándido - Gerente");
+        this.empresa = empresa;
+        initComponents();
+        lennarFranquicias();
+    }
+    
+    private void lennarFranquicias() {
+        
+        franquicias = empresa.getFranquicias();
+                
+        model = new DefaultListModel<>();
 
+        for (Franquicia p : franquicias) {
+            model.addElement(p.getNombre());
+        }
+
+        listFranquicias.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,115 +51,65 @@ public class Gerente_ModificarDatos extends javax.swing.JFrame {
 
         rbGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
         Nombre = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        Apelidos = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        bModificarDueno = new javax.swing.JButton();
-        bRetorno = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        rbDueno = new javax.swing.JRadioButton();
-        rbFranquicia = new javax.swing.JRadioButton();
-        rbTrabajador = new javax.swing.JRadioButton();
+        bElegir = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listFranquicias = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Nombre.setText("Nombre:");
+        Nombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        Nombre.setText("Elegir Franquicia");
 
-        Apelidos.setText("Apelidos:");
-
-        jLabel1.setText("Beneficio:");
-
-        bModificarDueno.setText("Modificar Dueño");
-
-        bRetorno.setText("Retorno");
-        bRetorno.addActionListener(new java.awt.event.ActionListener() {
+        bElegir.setText("Elegir");
+        bElegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetornoActionPerformed(evt);
+                bElegirActionPerformed(evt);
             }
         });
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVolverActionPerformed(evt);
+            }
         });
-        jScrollPane2.setViewportView(jList2);
 
-        rbDueno.setText("Dueño");
-
-        rbFranquicia.setText("Franquicia");
-
-        rbTrabajador.setText("Trabajador");
+        jScrollPane1.setViewportView(listFranquicias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(78, 78, 78)
+                .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDueno)
-                    .addComponent(rbFranquicia)
-                    .addComponent(rbTrabajador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Nombre)
-                                .addComponent(Apelidos))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(19, 19, 19))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bModificarDueno, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bRetorno)
-                        .addGap(57, 57, 57))))
+                        .addComponent(Nombre)
+                        .addGap(131, 131, 131))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Nombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Apelidos))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rbDueno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbFranquicia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbTrabajador)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(bModificarDueno, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(bRetorno))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(Nombre)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,11 +126,19 @@ public class Gerente_ModificarDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
         Gerente_Menu g = new Gerente_Menu();
         g.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bRetornoActionPerformed
+    }//GEN-LAST:event_bVolverActionPerformed
+
+    private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
+        int id = listFranquicias.getSelectedIndex();
+        
+        Gerente_ModificarDatos2 g = new Gerente_ModificarDatos2(empresa, id);
+        g.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bElegirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,20 +176,12 @@ public class Gerente_ModificarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Apelidos;
     private javax.swing.JLabel Nombre;
-    private javax.swing.JButton bModificarDueno;
-    private javax.swing.JButton bRetorno;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JButton bElegir;
+    private javax.swing.JButton bVolver;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JRadioButton rbDueno;
-    private javax.swing.JRadioButton rbFranquicia;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listFranquicias;
     private javax.swing.ButtonGroup rbGroup;
-    private javax.swing.JRadioButton rbTrabajador;
     // End of variables declaration//GEN-END:variables
 }

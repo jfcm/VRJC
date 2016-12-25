@@ -15,6 +15,12 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido");
         empresa = new Empresa();
     }
+    
+    public MainMenu(Empresa empresa) {
+        initComponents();
+        setTitle("Ventanas y Rejas José Cándido");
+        this.empresa = empresa;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

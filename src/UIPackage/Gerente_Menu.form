@@ -95,7 +95,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="bRetorno">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Retorno"/>
+            <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRetornoActionPerformed"/>

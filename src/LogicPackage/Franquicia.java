@@ -21,10 +21,12 @@ public class Franquicia {
     public Franquicia(){
         dueno = new Dueno("João", "Piedade", "joao_piedade", "913037795");
         lista_trabajadores = new ArrayList<>();
-        Nombre = null;
-        Direccion = null;
-        horaApertura = null;
-        horaCierre = null;
+        Nombre = "VRJC";
+        Direccion = "Madrid";
+        horaApertura = "09:00";
+        horaCierre = "18:00";
+        n_total_p_vendidos = 0;
+        ventas_totales = 0;
         cat = new Catalogo();
         generarTrabajadores();
     }
@@ -41,13 +43,12 @@ public class Franquicia {
     }
     
     private void generarTrabajadores() {
-        Trabajador t;
-        t = new Trabajador("Jorge", "Martins", "jorge", "123");
-        lista_trabajadores.add(t);
-        t = new Trabajador("João", "Piedade", "joao", "123");
-        lista_trabajadores.add(t);
-        t = new Trabajador("Jovana", "Milozhevic", "jovana", "123");
-        lista_trabajadores.add(t);
+        Trabajador t1 = new Trabajador("Jorge", "Martins", "jorge", "123");
+        lista_trabajadores.add(t1);
+        Trabajador t2 = new Trabajador("João", "Piedade", "joao", "123");
+        lista_trabajadores.add(t2);
+        Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123");
+        lista_trabajadores.add(t3);
     }
      
     public int getTotalProdutosVendidos()

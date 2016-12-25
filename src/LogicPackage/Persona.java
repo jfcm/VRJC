@@ -18,7 +18,7 @@ public abstract class Persona {
         this.apelido = null;
     }
     
-    public Persona(String nombre, String password, String usuario, String apelido)
+    public Persona(String nombre, String apelido, String usuario, String password)
     {
         this.apelido = apelido;
         this.nombre = nombre;
@@ -34,8 +34,8 @@ public abstract class Persona {
         return apelido;
     }
             
-    public void setNombre(String Nombre){
-        this.nombre = Nombre;
+    public void setNombre(String nombre){
+        this.nombre = nombre;
     }        
     
     public void setApelido(String apelido){

@@ -55,7 +55,7 @@ public class Gerente_Menu extends javax.swing.JFrame {
 
         bRestaurarCopia.setText("Restaurar Copia de Seguridad");
 
-        bRetorno.setText("Retorno");
+        bRetorno.setText("Volver");
         bRetorno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRetornoActionPerformed(evt);
@@ -107,7 +107,7 @@ public class Gerente_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
-        MainMenu m = new MainMenu();
+        MainMenu m = new MainMenu(empresa);
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bRetornoActionPerformed
@@ -119,7 +119,7 @@ public class Gerente_Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_bConsultarDatosActionPerformed
 
     private void bModificarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarDatosActionPerformed
-        Gerente_ModificarDatos m = new Gerente_ModificarDatos();
+        Gerente_ModificarDatos m = new Gerente_ModificarDatos(empresa);
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bModificarDatosActionPerformed

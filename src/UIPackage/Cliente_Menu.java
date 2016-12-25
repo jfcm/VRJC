@@ -2,10 +2,13 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
+import LogicPackage.Producto;
+import java.util.ArrayList;
 
 public class Cliente_Menu extends javax.swing.JFrame {
 
     Empresa empresa;
+    ArrayList<Producto> compras = new ArrayList<>();
     
     public Cliente_Menu(Empresa empresa) {
         initComponents();
@@ -45,6 +48,11 @@ public class Cliente_Menu extends javax.swing.JFrame {
         });
 
         bBuscarProducto.setText("Buscar Producto");
+        bBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarProductoActionPerformed(evt);
+            }
+        });
 
         bPedirConfiguracion.setText("Pedir Configuración Producto");
 
@@ -101,7 +109,7 @@ public class Cliente_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
-        MainMenu m = new MainMenu();
+        MainMenu m = new MainMenu(empresa);
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bRetornoActionPerformed
@@ -111,6 +119,12 @@ public class Cliente_Menu extends javax.swing.JFrame {
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bCatalogoActionPerformed
+
+    private void bBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarProductoActionPerformed
+        Cliente_BuscarProducto c = new Cliente_BuscarProducto(empresa, compras);
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bBuscarProductoActionPerformed
 
     /**
      * @param args the command line arguments

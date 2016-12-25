@@ -1,18 +1,14 @@
 
 package UIPackage;
 
-import LogicPackage.Dueno;
 import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
-import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 public class Gerente_ConsultarDatos extends javax.swing.JFrame {
 
-    ArrayList<Trabajador> trabajadores;
     ArrayList<Franquicia> franquicias;
-    ArrayList<Dueno> duenos;
     DefaultListModel<String> model;
     Empresa empresa;
     
@@ -28,8 +24,22 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido - Gerente");
         this.empresa = empresa;
         initComponents();
+        lennarFranquicias();
     }
 
+    private void lennarFranquicias() {
+        
+        franquicias = empresa.getFranquicias();
+                
+        model = new DefaultListModel<>();
+
+        for (Franquicia p : franquicias) {
+            model.addElement(p.getNombre());
+        }
+
+        listFranquicias.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,83 +52,63 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
         rbGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        listDatos = new javax.swing.JList<>();
+        listFranquicias = new javax.swing.JList<>();
         bRetorno = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        rbDueno = new javax.swing.JRadioButton();
-        rbFranquicia = new javax.swing.JRadioButton();
-        rbTrabajador = new javax.swing.JRadioButton();
+        bElegir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane2.setViewportView(listDatos);
+        jScrollPane2.setViewportView(listFranquicias);
 
-        bRetorno.setText("Retorno");
+        bRetorno.setText("Volver");
         bRetorno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRetornoActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
-
-        rbGroup.add(rbDueno);
-        rbDueno.setText("Dueño");
-
-        rbGroup.add(rbFranquicia);
-        rbFranquicia.setText("Franquicia");
-
-        rbGroup.add(rbTrabajador);
-        rbTrabajador.setText("Trabajador");
-        rbTrabajador.addActionListener(new java.awt.event.ActionListener() {
+        bElegir.setText("Elegir");
+        bElegir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbTrabajadorActionPerformed(evt);
+                bElegirActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setText("Elegir Franquicia");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDueno)
-                    .addComponent(rbFranquicia)
-                    .addComponent(rbTrabajador))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(103, 103, 103)
-                        .addComponent(bRetorno)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(bRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel1)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bRetorno))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(rbDueno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbFranquicia)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbTrabajador)
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bRetorno)
+                    .addComponent(bElegir))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,22 +126,18 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
-        Gerente_Menu g = new Gerente_Menu();
+        Gerente_Menu g = new Gerente_Menu(empresa);
         g.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bRetornoActionPerformed
 
-    private void rbTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTrabajadorActionPerformed
-                
-        //trabajadores = empresa.getFranquicias();
-        model = new DefaultListModel<>();
-
-        for (Trabajador t : trabajadores) {
-            model.addElement(t.getNombre());
-        }
-
-        listDatos.setModel(model);
-    }//GEN-LAST:event_rbTrabajadorActionPerformed
+    private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
+        int id = listFranquicias.getSelectedIndex();
+        
+        Gerente_ConsultarFranquicia g = new Gerente_ConsultarFranquicia(empresa, id);
+        g.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bElegirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,15 +175,13 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bElegir;
     private javax.swing.JButton bRetorno;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JList<String> listDatos;
-    private javax.swing.JRadioButton rbDueno;
-    private javax.swing.JRadioButton rbFranquicia;
+    private javax.swing.JList<String> listFranquicias;
     private javax.swing.ButtonGroup rbGroup;
-    private javax.swing.JRadioButton rbTrabajador;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -42,6 +42,14 @@ public class Empresa {
         return franquicias;
     }
     
+    public Gerente getGerente(){
+        return gerente;
+    }
+    
+    public void setGerente(Gerente gerente){
+        this.gerente = gerente;
+    }
+    
     public boolean darBajaF(String nombre)
     {
         int flag = 0;
