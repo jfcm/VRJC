@@ -138,7 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bTrabajadorActionPerformed
 
     private void bClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClienteActionPerformed
-        Cliente_Menu c = new Cliente_Menu(empresa);
+        Cliente_EligirFranquicia c = new Cliente_EligirFranquicia(empresa);
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bClienteActionPerformed

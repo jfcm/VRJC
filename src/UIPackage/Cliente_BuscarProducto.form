@@ -42,34 +42,39 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                  <Component id="LBuscarProducto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="369" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="bComprar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="bModificarMedidas" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="bVolver" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="LNombreProducto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="TFnombreProducto" min="-2" pref="237" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BNombreProducto" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="Bvolver" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="Bcomprar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane1" min="-2" pref="369" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                          <Component id="LBuscarProducto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,14 +89,15 @@
                       <Component id="LNombreProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BNombreProducto" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="32" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="117" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Bcomprar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Bvolver" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bComprar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bVolver" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bModificarMedidas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -100,7 +106,7 @@
         <Component class="javax.swing.JLabel" name="LBuscarProducto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
+              <Font name="Dialog" size="18" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar Producto"/>
           </Properties>
@@ -137,20 +143,28 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="Bcomprar">
+        <Component class="javax.swing.JButton" name="bComprar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Comprar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BcomprarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bComprarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Bvolver">
+        <Component class="javax.swing.JButton" name="bVolver">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BvolverActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bVolverActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="bModificarMedidas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Modificar Medidas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModificarMedidasActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

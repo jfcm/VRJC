@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UIPackage;
 
 import LogicPackage.Empresa;
@@ -11,45 +7,39 @@ import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author joaom
- */
-public class Cliente_Compras extends javax.swing.JFrame {
 
+public class Cliente_Compras extends javax.swing.JFrame {
+    
+    Empresa empresa;
+    DefaultListModel<String> model;
+    int id;
+    
     /**
      * Creates new form Cliente_Compras
      */
-    
-    Empresa empresa;
-    ArrayList<Producto> productos;
-    ArrayList<Franquicia> franquicias;
-    DefaultListModel<String> model;
-    ArrayList<Producto> compras;
-    
     public Cliente_Compras() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
     }
     
-    public Cliente_Compras(Empresa empresa, ArrayList<Producto> compras) {
+    public Cliente_Compras(Empresa empresa, int id) {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
         this.empresa = empresa;
-        this.franquicias = empresa.getFranquicias();
-        this.compras = compras;
+        this.id = id;
+        llenarProductos();        
+    }
+    
+    private void llenarProductos(){
+        model = new DefaultListModel<>();
         
-         model = new DefaultListModel<>();
-        
-        for (Producto p : compras) {     
+        for (Producto p : empresa.getFranquicias().get(0).getCompras()) {     
             
                 model.addElement(p.getNombre());    
                 
         }
         Lprodutos.setModel(model);
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,8 +69,8 @@ public class Cliente_Compras extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(Lprodutos);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Cliente Compras");
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel1.setText("Compras");
 
         Bborrar.setText("Borrar");
         Bborrar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +79,7 @@ public class Cliente_Compras extends javax.swing.JFrame {
             }
         });
 
-        BComprarMas.setText("Comprar Mas");
+        BComprarMas.setText("Comprar Más");
         BComprarMas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BComprarMasActionPerformed(evt);
@@ -110,10 +100,6 @@ public class Cliente_Compras extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -123,20 +109,24 @@ public class Cliente_Compras extends javax.swing.JFrame {
                         .addComponent(BComprarMas)
                         .addGap(0, 2, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Bver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BfinalizarCompras)))
-                .addGap(15, 15, 15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BfinalizarCompras))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
@@ -146,7 +136,7 @@ public class Cliente_Compras extends javax.swing.JFrame {
                     .addComponent(BComprarMas)
                     .addComponent(Bver)
                     .addComponent(BfinalizarCompras))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,21 +154,19 @@ public class Cliente_Compras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BComprarMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarMasActionPerformed
-
-        Cliente_BuscarProducto s = new Cliente_BuscarProducto(empresa, compras);
+        Cliente_BuscarProducto s = new Cliente_BuscarProducto(empresa, id);
         s.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BComprarMasActionPerformed
 
     private void BborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BborrarActionPerformed
+        int m = Lprodutos.getSelectedIndex();
         
-        int  m = Lprodutos.getSelectedIndex();
-        
-        compras.remove(m);
+        empresa.getFranquicias().get(id).getCompras().remove(m);
         
         model = new DefaultListModel<>();
        
-        for (Producto p : compras) {     
+        for (Producto p : empresa.getFranquicias().get(id).getCompras()) {     
             
                 model.addElement(p.getNombre());    
                 
@@ -188,15 +176,14 @@ public class Cliente_Compras extends javax.swing.JFrame {
     }//GEN-LAST:event_BborrarActionPerformed
 
     private void BverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BverActionPerformed
+        int m = Lprodutos.getSelectedIndex();
         
-        int  m = Lprodutos.getSelectedIndex();
+        String precioVenta = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getPrecioVenta());
+        String alto = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getAlto());
+        String ancho = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getAncho());
         
-        String precioVenta = String.valueOf(compras.get(m).getPrecioVenta());
-        String alto = String.valueOf(compras.get(m).getAlto());
-        String ancho = String.valueOf(compras.get(m).getAncho());
-        
-        TAprodutos.setText("Producto: " + compras.get(m).getNombre() + 
-                                 "\n\nDrescription: " + compras.get(m).getDescription() + 
+        TAprodutos.setText("Producto: " + empresa.getFranquicias().get(id).getCompras().get(m).getNombre() + 
+                                 "\n\nDrescription: " + empresa.getFranquicias().get(id).getCompras().get(m).getDescription() + 
                                  "\n\nPrecio: " + precioVenta + 
                                  "\n\nAlto: " + alto +
                                  "\n\nAncho: " + ancho);

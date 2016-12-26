@@ -2,25 +2,25 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
-import LogicPackage.Producto;
-import java.util.ArrayList;
 
 public class Cliente_Menu extends javax.swing.JFrame {
 
     Empresa empresa;
-    ArrayList<Producto> compras = new ArrayList<>();
+    int id;
     
-    public Cliente_Menu(Empresa empresa) {
-        initComponents();
-        setTitle("Ventanas y Rejas José Cándido - Cliente");
-        this.empresa = empresa;
-    }
     /**
      * Creates new form Cliente
      */
     public Cliente_Menu() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
+    }
+    
+    public Cliente_Menu(Empresa empresa, int id) {
+        initComponents();
+        setTitle("Ventanas y Rejas José Cándido - Cliente");
+        this.empresa = empresa;
+        this.id = id;
     }
 
     /**
@@ -35,8 +35,8 @@ public class Cliente_Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bCatalogo = new javax.swing.JButton();
         bBuscarProducto = new javax.swing.JButton();
-        bPedirConfiguracion = new javax.swing.JButton();
-        bRetorno = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,44 +54,48 @@ public class Cliente_Menu extends javax.swing.JFrame {
             }
         });
 
-        bPedirConfiguracion.setText("Pedir Configuración Producto");
-
-        bRetorno.setText("Retorno");
-        bRetorno.addActionListener(new java.awt.event.ActionListener() {
+        bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetornoActionPerformed(evt);
+                bVolverActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                .addGap(113, 113, 113))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(bRetorno)
-                        .addGap(172, 172, 172))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bPedirConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(113, 113, 113))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(bVolver))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1)))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
                 .addComponent(bCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bPedirConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(bRetorno)
-                .addGap(36, 36, 36))
+                .addComponent(bVolver)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,20 +112,20 @@ public class Cliente_Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
         MainMenu m = new MainMenu(empresa);
         m.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bRetornoActionPerformed
+    }//GEN-LAST:event_bVolverActionPerformed
 
     private void bCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCatalogoActionPerformed
-        Cliente_ConsultarCatalogo c = new Cliente_ConsultarCatalogo(empresa);
+        Cliente_ConsultarCatalogo c = new Cliente_ConsultarCatalogo(empresa, id);
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bCatalogoActionPerformed
 
     private void bBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarProductoActionPerformed
-        Cliente_BuscarProducto c = new Cliente_BuscarProducto(empresa, compras);
+        Cliente_BuscarProducto c = new Cliente_BuscarProducto(empresa, id);
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bBuscarProductoActionPerformed
@@ -165,8 +169,8 @@ public class Cliente_Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBuscarProducto;
     private javax.swing.JButton bCatalogo;
-    private javax.swing.JButton bPedirConfiguracion;
-    private javax.swing.JButton bRetorno;
+    private javax.swing.JButton bVolver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

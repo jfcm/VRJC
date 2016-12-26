@@ -1,61 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package UIPackage;
 
 import LogicPackage.Empresa;
-import LogicPackage.Franquicia;
 import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author joaom
- */
 public class Cliente_BuscarProducto extends javax.swing.JFrame {
-
+    
+    Empresa empresa;
+    DefaultListModel<String> model;
+    ArrayList<Producto> p1;
+    int id;
+    
     /**
      * Creates new form Cliente_BuscarProducto
      */
-    Empresa empresa;
-    ArrayList<Producto> productos;
-    ArrayList<Franquicia> franquicias;
-    DefaultListModel<String> model;
-    ArrayList<Producto> p1;
-    ArrayList<Producto> compras;
-    
     public Cliente_BuscarProducto() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
     }
      
-    public Cliente_BuscarProducto(Empresa empresa, ArrayList<Producto> compras)
-    {
+    public Cliente_BuscarProducto(Empresa empresa, int id){
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
         this.empresa = empresa;
-        this.franquicias = empresa.getFranquicias();
-        this.compras = compras;
+        this.id = id;
     }
     
     private void pesquisarPorNombre(String nombre){
-        Franquicia f = franquicias.get(0);
-        productos = f.getCatalogo().getListaProductos();
+        
         p1 = new ArrayList<>();        
         model = new DefaultListModel<>();
 
-        for (Producto p : productos) {
+        for (Producto p : empresa.getFranquicias().get(id).getCatalogo().getListaProductos()) {
             if(p.getNombre().equals(nombre))
             {
-                model.addElement(p.getNombre());
+                model.addElement(p.getDescription());
                 p1.add(p);
             }
         }
         ListProductos.setModel(model);
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,12 +59,13 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
         BNombreProducto = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListProductos = new javax.swing.JList<>();
-        Bcomprar = new javax.swing.JButton();
-        Bvolver = new javax.swing.JButton();
+        bComprar = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
+        bModificarMedidas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        LBuscarProducto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LBuscarProducto.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         LBuscarProducto.setText("Buscar Producto");
 
         TFnombreProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -97,17 +85,24 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(ListProductos);
 
-        Bcomprar.setText("Comprar");
-        Bcomprar.addActionListener(new java.awt.event.ActionListener() {
+        bComprar.setText("Comprar");
+        bComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BcomprarActionPerformed(evt);
+                bComprarActionPerformed(evt);
             }
         });
 
-        Bvolver.setText("Volver");
-        Bvolver.addActionListener(new java.awt.event.ActionListener() {
+        bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BvolverActionPerformed(evt);
+                bVolverActionPerformed(evt);
+            }
+        });
+
+        bModificarMedidas.setText("Modificar Medidas");
+        bModificarMedidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarMedidasActionPerformed(evt);
             }
         });
 
@@ -115,28 +110,32 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(LBuscarProducto)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(bComprar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bModificarMedidas)
+                        .addGap(18, 18, 18)
+                        .addComponent(bVolver)
+                        .addGap(60, 60, 60))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(LNombreProducto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TFnombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BNombreProducto))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Bvolver)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Bcomprar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38))
+                        .addGap(153, 153, 153)
+                        .addComponent(LBuscarProducto)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,13 +147,14 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
                     .addComponent(TFnombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LNombreProducto)
                     .addComponent(BNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Bcomprar)
-                    .addComponent(Bvolver))
-                .addContainerGap())
+                    .addComponent(bComprar)
+                    .addComponent(bVolver)
+                    .addComponent(bModificarMedidas))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,22 +183,29 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFnombreProductoActionPerformed
 
-    private void BvolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BvolverActionPerformed
-        Cliente_Menu m = new Cliente_Menu();
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
+        Cliente_Menu m = new Cliente_Menu(empresa, id);
         m.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BvolverActionPerformed
+    }//GEN-LAST:event_bVolverActionPerformed
 
-    private void BcomprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcomprarActionPerformed
-                 
-        int  m = ListProductos.getSelectedIndex();
+    private void bComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bComprarActionPerformed
+        int m = ListProductos.getSelectedIndex();
         
-        compras.add(p1.get(m));
+        empresa.getFranquicias().get(id).getCompras().add(p1.get(m));
         
-        Cliente_Compras c = new Cliente_Compras(empresa, compras);
+        Cliente_Compras c = new Cliente_Compras(empresa, id);
         c.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_BcomprarActionPerformed
+    }//GEN-LAST:event_bComprarActionPerformed
+
+    private void bModificarMedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarMedidasActionPerformed
+        int m = ListProductos.getSelectedIndex();
+        
+        Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, p1.get(m), id);
+        d.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bModificarMedidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,12 +244,13 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BNombreProducto;
-    private javax.swing.JButton Bcomprar;
-    private javax.swing.JButton Bvolver;
     private javax.swing.JLabel LBuscarProducto;
     private javax.swing.JLabel LNombreProducto;
     private javax.swing.JList<String> ListProductos;
     private javax.swing.JTextField TFnombreProducto;
+    private javax.swing.JButton bComprar;
+    private javax.swing.JButton bModificarMedidas;
+    private javax.swing.JButton bVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

@@ -2,7 +2,6 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
-import LogicPackage.Franquicia;
 import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -10,9 +9,8 @@ import javax.swing.DefaultListModel;
 public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     Empresa empresa;
-    ArrayList<Producto> productos;
-    ArrayList<Franquicia> franquicias;
     DefaultListModel<String> model;
+    int id;
     
     /**
      * Creates new form Dueno_ConsultarCatalogo
@@ -22,22 +20,20 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido - Cliente");
     }
     
-    public Cliente_ConsultarCatalogo(Empresa empresa) {
+    public Cliente_ConsultarCatalogo(Empresa empresa, int id) {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Cliente");
         this.empresa = empresa;
-        this.franquicias = empresa.getFranquicias();
+        this.id = id;
         lennarListaProductos();
     }
 
     private void lennarListaProductos(){
-        Franquicia f = franquicias.get(0);
-        productos = f.getCatalogo().getListaProductos();
-                
+                        
         model = new DefaultListModel<>();
 
-        for (Producto p : productos) {
-            model.addElement(p.getNombre());
+        for (Producto p : empresa.getFranquicias().get(id).getCatalogo().getListaProductos()){
+            model.addElement(p.getDescription());
         }
 
         listProductos.setModel(model);
@@ -60,6 +56,9 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         bVerProducto = new javax.swing.JButton();
         bVolver = new javax.swing.JButton();
+        Balterar = new javax.swing.JButton();
+        BComprar = new javax.swing.JButton();
+        Bordenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,7 +71,7 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Catálogo General");
 
-        bVerProducto.setText("Ver Producto");
+        bVerProducto.setText("Ver");
         bVerProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bVerProductoActionPerformed(evt);
@@ -86,28 +85,52 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
             }
         });
 
+        Balterar.setText("Alterar");
+        Balterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BalterarActionPerformed(evt);
+            }
+        });
+
+        BComprar.setText("Comprar");
+        BComprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BComprarActionPerformed(evt);
+            }
+        });
+
+        Bordenar.setText("Ordenar");
+        Bordenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BordenarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(bVerProducto)))
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(bVerProducto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Balterar)
+                                        .addGap(7, 7, 7)
+                                        .addComponent(BComprar))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(Bordenar))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(165, 165, 165)
+                            .addComponent(jLabel1))))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,15 +139,21 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bVolver))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bVerProducto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(bVolver)
-                .addGap(23, 23, 23))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bVerProducto)
+                            .addComponent(Balterar)
+                            .addComponent(BComprar))
+                        .addGap(5, 5, 5)
+                        .addComponent(Bordenar)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,14 +172,14 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     private void bVerProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerProductoActionPerformed
         
-        int id = listProductos.getSelectedIndex();
+        int aux = listProductos.getSelectedIndex();
      
-        String precioVenta = String.valueOf(productos.get(id).getPrecioVenta());
-        String alto = String.valueOf(productos.get(id).getAlto());
-        String ancho = String.valueOf(productos.get(id).getAncho());
+        String precioVenta = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getPrecioVenta());
+        String alto = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getAlto());
+        String ancho = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getAncho());
         
-        taListarProducto.setText("Producto: " + productos.get(id).getNombre() + 
-                                 "\n\nDrescription: " + productos.get(id).getDescription() + 
+        taListarProducto.setText("Producto: " + empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getNombre() + 
+                                 "\n\nDrescription: " + empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getDescription() + 
                                  "\n\nPrecio: " + precioVenta + 
                                  "\n\nAlto: " + alto +
                                  "\n\nAncho: " + ancho);
@@ -158,10 +187,56 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_bVerProductoActionPerformed
 
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        Cliente_Menu c = new Cliente_Menu(empresa);
+        Cliente_Menu c = new Cliente_Menu(empresa, id);
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
+
+    private void BalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalterarActionPerformed
+         int m = listProductos.getSelectedIndex();
+        
+        Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m), id);
+        d.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BalterarActionPerformed
+
+    private void BComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarActionPerformed
+        int m = listProductos.getSelectedIndex();
+        
+        empresa.getFranquicias().get(id).getCompras().add(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
+        
+        Cliente_Compras c = new Cliente_Compras(empresa, id);
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BComprarActionPerformed
+
+    private void BordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BordenarActionPerformed
+
+        ArrayList<Producto> arraylist = empresa.getFranquicias().get(0).getCatalogo().getListaProductos();
+        Producto tmp;
+        
+        for (int i = 0; i < arraylist.size(); i++) {
+
+            for (int j = arraylist.size() - 1; j > i; j--) {
+              
+                if(arraylist.get(i).getPrecioVenta() > arraylist.get(j).getPrecioVenta()){
+
+                  tmp = arraylist.get(i);
+                  arraylist.set(i,arraylist.get(j)) ;
+                  arraylist.set(j,tmp);
+                }
+            } 
+        }
+        
+        model = new DefaultListModel<>();
+
+        for (Producto p : arraylist){
+            model.addElement(p.getDescription());
+        }
+
+        listProductos.setModel(model);
+        
+    }//GEN-LAST:event_BordenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +275,9 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BComprar;
+    private javax.swing.JButton Balterar;
+    private javax.swing.JButton Bordenar;
     private javax.swing.JButton bVerProducto;
     private javax.swing.JButton bVolver;
     private javax.swing.JLabel jLabel1;

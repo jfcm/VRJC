@@ -309,13 +309,61 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
 
     private void bDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarAltaActionPerformed
         
+        int aux = listaProductos.getSelectedIndex();
+        int flag = 0;
         
+        String nombre = tfNombre.getText();
+        String description = tfDescription.getText();
+        String precioVenta_aux = tfPrecioVenta.getText();
+        String precioCompra_aux = tfPrecioCompra.getText();
+        String alto_aux = tfAlto.getText();
+        String ancho_aux = tfAncho.getText();
+        double precioVenta = Double.parseDouble(precioVenta_aux);
+        double precioCompra = Double.parseDouble(precioCompra_aux);
+        double alto = Double.parseDouble(alto_aux);
+        double ancho = Double.parseDouble(ancho_aux);
+        
+        if(rbPieza.isSelected()){
+            Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+            productos.add(p);
+            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+            flag = 1;
+        }
+        
+        if(rbVentana.isSelected()){
+            Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
+            productos.add(p);
+            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+            flag = 1;
+        }
+        
+        if(rbReja.isSelected()){
+            Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
+            productos.add(p);
+            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+            flag = 1;
+        }
+        
+        if(flag == 1){
+            tfNombre.setText(null);
+            tfDescription.setText(null);
+            tfPrecioVenta.setText(null);
+            tfPrecioCompra.setText(null);
+            tfAlto.setText(null);
+            tfAncho.setText(null);
+            llenarListaProductos();
+        }
         
     }//GEN-LAST:event_bDarAltaActionPerformed
 
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
         
+        int aux = listaProductos.getSelectedIndex();
         
+        Producto p = productos.get(aux);
+        productos.remove(p);
+        empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+        llenarListaProductos();
         
     }//GEN-LAST:event_bDarBajaActionPerformed
 

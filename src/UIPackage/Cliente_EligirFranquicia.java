@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package UIPackage;
 
 import LogicPackage.Empresa;
@@ -6,27 +10,26 @@ import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-public class Gerente_EligirFranquicia extends javax.swing.JFrame {
+public class Cliente_EligirFranquicia extends javax.swing.JFrame {
 
     ArrayList<Franquicia> franquicias;
     DefaultListModel<String> model;
     Empresa empresa;
     int id;
-    int aux;
     
     /**
-     * Creates new form Gerente_ModificarDatos
+     * Creates new form Cliente_EligirFranquicia
      */
-    public Gerente_EligirFranquicia() {
+    public Cliente_EligirFranquicia() {
         initComponents();
-        setTitle("Ventanas y Rejas José Cándido - Gerente");
+        setTitle("Ventanas y Rejas José Cándido - Cliente");
     }
     
-    public Gerente_EligirFranquicia(Empresa empresa, int aux) {
-        setTitle("Ventanas y Rejas José Cándido - Gerente");
-        this.empresa = empresa;
+    public Cliente_EligirFranquicia(Empresa empresa) {
         initComponents();
-        this.aux = aux;
+        setTitle("Ventanas y Rejas José Cándido - Cliente");
+        this.empresa = empresa;
+        franquicias = empresa.getFranquicias();
         lennarFranquicias();
     }
     
@@ -42,7 +45,7 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
 
         listFranquicias.setModel(model);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +55,6 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        rbGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         Nombre = new javax.swing.JLabel();
         bElegir = new javax.swing.JButton();
@@ -92,7 +94,7 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
                 .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,7 +114,7 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,26 +131,18 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
+        id = listFranquicias.getSelectedIndex();
+        Cliente_Menu g = new Cliente_Menu(empresa, id);
+        g.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bElegirActionPerformed
+
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        Gerente_Menu g = new Gerente_Menu(empresa);
+        MainMenu g = new MainMenu(empresa);
         g.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
-
-    private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
-        id = listFranquicias.getSelectedIndex();
-        if(aux == 0){
-            Gerente_ModificarDueno g = new Gerente_ModificarDueno(empresa, id);
-            g.setVisible(true);
-            this.dispose();
-        }
-        else{
-            Gerente_ModificarTrabajador g = new Gerente_ModificarTrabajador(empresa, id);
-            g.setVisible(true);
-            this.dispose();
-        }
-        
-    }//GEN-LAST:event_bElegirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,21 +161,20 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cliente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gerente_EligirFranquicia().setVisible(true);
+                new Cliente_EligirFranquicia().setVisible(true);
             }
         });
     }
@@ -193,6 +186,5 @@ public class Gerente_EligirFranquicia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listFranquicias;
-    private javax.swing.ButtonGroup rbGroup;
     // End of variables declaration//GEN-END:variables
 }

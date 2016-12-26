@@ -34,7 +34,7 @@ public class Trabajador_Menu extends javax.swing.JFrame {
         bVenderProducto = new javax.swing.JButton();
         bInstalacionProducto = new javax.swing.JButton();
         bConfigurarProducto = new javax.swing.JButton();
-        bRetorno = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,10 +45,10 @@ public class Trabajador_Menu extends javax.swing.JFrame {
 
         bConfigurarProducto.setText("Configurar Producto");
 
-        bRetorno.setText("Retorno");
-        bRetorno.addActionListener(new java.awt.event.ActionListener() {
+        bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetornoActionPerformed(evt);
+                bVolverActionPerformed(evt);
             }
         });
 
@@ -63,17 +63,16 @@ public class Trabajador_Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(132, 132, 132)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(bVenderProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bInstalacionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bConfigurarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(bRetorno))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bVenderProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bInstalacionProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bConfigurarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(bVolver)))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +87,7 @@ public class Trabajador_Menu extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(bConfigurarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(bRetorno)
+                .addComponent(bVolver)
                 .addGap(36, 36, 36))
         );
 
@@ -106,11 +105,11 @@ public class Trabajador_Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
         MainMenu m = new MainMenu(empresa);
         m.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bRetornoActionPerformed
+    }//GEN-LAST:event_bVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,8 +150,8 @@ public class Trabajador_Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bConfigurarProducto;
     private javax.swing.JButton bInstalacionProducto;
-    private javax.swing.JButton bRetorno;
     private javax.swing.JButton bVenderProducto;
+    private javax.swing.JButton bVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
