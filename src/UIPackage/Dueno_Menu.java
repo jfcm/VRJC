@@ -1,14 +1,26 @@
 
 package UIPackage;
 
+import LogicPackage.Empresa;
+
 public class Dueno_Menu extends javax.swing.JFrame {
 
+    Empresa empresa;
+    int id;
+    
     /**
      * Creates new form Dueno
      */
     public Dueno_Menu() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Dueño");
+    }
+    
+    public Dueno_Menu(Empresa empresa, int id) {
+        initComponents();
+        setTitle("Ventanas y Rejas José Cándido - Dueño");
+        this.empresa = empresa;
+        this.id = id;
     }
 
     /**
@@ -21,58 +33,90 @@ public class Dueno_Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         bGestionarProductos = new javax.swing.JButton();
-        bModificarTrabajadores = new javax.swing.JButton();
+        bGestionarTrabajadores = new javax.swing.JButton();
         bRetorno = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bGestionarProductos.setText("Gestionar Productos");
+        bGestionarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGestionarProductosActionPerformed(evt);
+            }
+        });
 
-        bModificarTrabajadores.setText("Modificar Trabajadors");
+        bGestionarTrabajadores.setText("Gestionar Trabajadores");
+        bGestionarTrabajadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGestionarTrabajadoresActionPerformed(evt);
+            }
+        });
 
-        bRetorno.setText("Retorno");
+        bRetorno.setText("Volver");
         bRetorno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bRetornoActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Dueño");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bGestionarProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bModificarTrabajadores, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(bRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                            .addComponent(bGestionarTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(bRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(bGestionarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bModificarTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bGestionarTrabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(bRetorno)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
-        MainMenu m = new MainMenu();
+        MainMenu m = new MainMenu(empresa);
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bRetornoActionPerformed
+
+    private void bGestionarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGestionarProductosActionPerformed
+        Dueno_GestionarProductos m = new Dueno_GestionarProductos(empresa, id);
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bGestionarProductosActionPerformed
+
+    private void bGestionarTrabajadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGestionarTrabajadoresActionPerformed
+        Dueno_GestionarTrabajadores m = new Dueno_GestionarTrabajadores(empresa, id);
+        m.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bGestionarTrabajadoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,7 +156,8 @@ public class Dueno_Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGestionarProductos;
-    private javax.swing.JButton bModificarTrabajadores;
+    private javax.swing.JButton bGestionarTrabajadores;
     private javax.swing.JButton bRetorno;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

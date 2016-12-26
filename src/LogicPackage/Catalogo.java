@@ -47,6 +47,10 @@ public class Catalogo implements Variables {
         return listaproductos;
     }
     
+    public void setListaProductos(ArrayList<Producto> listaproductos){
+        this.listaproductos = listaproductos;
+    }
+    
     public boolean anadirProducto(String tipo, String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho) {
         
         Producto obj = null;

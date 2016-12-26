@@ -13,12 +13,12 @@ public class VentanaaMedida extends VentanaPreconfigurada {
         super(nombre, description, precioVenta, precioCompra, alto, ancho);
     }
 
-    public void cambiarAncho(){
-        super.setAncho(nuevoAncho);
+    public void cambiarAncho(double Ancho){
+        super.setAncho(Ancho);
     }
 
-    public void cambiarAlto(){
-        super.setAlto(nuevoAlto);
+    public void cambiarAlto(double Alto){
+        super.setAlto(Alto);
     }
     
 }

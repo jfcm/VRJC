@@ -17,7 +17,7 @@ public class Trabajador extends Persona {
         return Sueldo;
     }
                     
-    public void setSaldo(int Sueldo){
+    public void setSaldo(float Sueldo){
         this.Sueldo = Sueldo;
     }   
     

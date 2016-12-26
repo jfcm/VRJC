@@ -2,30 +2,28 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
-import LogicPackage.Franquicia;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
+public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
 
     Empresa empresa;
-    ArrayList<Franquicia> franquicias;
     ArrayList<Trabajador> trabajadores;
     int id;
     DefaultListModel<String> model;
     
     /**
-     * Creates new form Gerente_ModificarTrabajador
+     * Creates new form Dueno_ModificarTrabajadores
      */
-    public Gerente_ModificarTrabajador() {
+    public Dueno_GestionarTrabajadores() {
         initComponents();
-        setTitle("Ventanas y Rejas José Cándido - Gerente");
+        setTitle("Ventanas y Rejas José Cándido - Dueño");
     }
     
-    public Gerente_ModificarTrabajador(Empresa empresa, int id) {
+    public Dueno_GestionarTrabajadores(Empresa empresa, int id) {
         initComponents();
-        setTitle("Ventanas y Rejas José Cándido - Gerente");
+        setTitle("Ventanas y Rejas José Cándido - Dueño");
         this.empresa = empresa;
         this.id = id;
         trabajadores = empresa.getFranquicias().get(id).getListTrabajadores();
@@ -35,8 +33,8 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
     private void llenarListaTrabajadores(){
         model = new DefaultListModel<>();
 
-        for (Trabajador p : trabajadores) {
-            model.addElement(p.getNombre());
+        for (Trabajador t : trabajadores) {
+            model.addElement(t.getNombre());
         }
 
         listTrabajadores.setModel(model);
@@ -52,25 +50,40 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        bVolver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        tfNombre = new javax.swing.JTextField();
-        tfPassword = new javax.swing.JTextField();
-        tfApelidos = new javax.swing.JTextField();
-        tfUsuario = new javax.swing.JTextField();
-        bDarBaja = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listTrabajadores = new javax.swing.JList<>();
+        bDarBaja = new javax.swing.JButton();
+        bDarAlta = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        tfNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        tfApelidos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        tfUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        tfPassword = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         tfSueldo = new javax.swing.JTextField();
-        bModificar = new javax.swing.JButton();
-        bDarAlta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane1.setViewportView(listTrabajadores);
+
+        bDarBaja.setText("Dar Baja");
+        bDarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDarBajaActionPerformed(evt);
+            }
+        });
+
+        bDarAlta.setText("Dar Alta");
+        bDarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDarAltaActionPerformed(evt);
+            }
+        });
 
         bVolver.setText("Volver");
         bVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -80,16 +93,7 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Modificar Trabajador");
-
-        bDarBaja.setText("Dar Baja");
-        bDarBaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bDarBajaActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(listTrabajadores);
+        jLabel1.setText("Gestionar Trabajadores");
 
         jLabel2.setText("Nombre:");
 
@@ -101,30 +105,16 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
 
         jLabel6.setText("Sueldo:");
 
-        bModificar.setText("Modificar");
-        bModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bModificarActionPerformed(evt);
-            }
-        });
-
-        bDarAlta.setText("Dar Alta");
-        bDarAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bDarAltaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,29 +132,25 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
                                 .addComponent(tfNombre)
                                 .addComponent(tfApelidos)
                                 .addComponent(tfUsuario)
-                                .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55))
+                                .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(bDarBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(bDarBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(bDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(bModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(226, 226, 226))
+                        .addGap(18, 18, 18)
+                        .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,20 +173,19 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
                             .addComponent(tfSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bDarBaja)
-                    .addComponent(bVolver)
-                    .addComponent(bModificar)
-                    .addComponent(bDarAlta))
-                .addGap(32, 32, 32))
+                    .addComponent(bDarAlta)
+                    .addComponent(bVolver))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,57 +196,10 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        Gerente_Menu g = new Gerente_Menu(empresa);
+        Dueno_Menu g = new Dueno_Menu(empresa, id);
         g.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
-
-    private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
-        
-        int aux = listTrabajadores.getSelectedIndex();
-        
-        Trabajador t = trabajadores.get(aux);
-        trabajadores.remove(aux);
-        
-        boolean DarBajaCorrecto = empresa.getFranquicias().get(id).darBajaTrabajador(t);
-        
-        if(DarBajaCorrecto == true){
-            //fez bem
-        }
-        else{
-            //fez mal
-        }
-        
-        llenarListaTrabajadores();
-        
-    }//GEN-LAST:event_bDarBajaActionPerformed
-
-    private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
-        
-        int aux = listTrabajadores.getSelectedIndex();
-        
-        String nombre = tfNombre.getText();
-        String apelidos = tfApelidos.getText();
-        String usuario = tfUsuario.getText();
-        String password = tfPassword.getText();
-        String sueldo_aux = tfSueldo.getText();
-        float sueldo = Float.parseFloat(sueldo_aux);
-
-        Trabajador t = new Trabajador(nombre, apelidos, usuario, password);
-        t.setSaldo(sueldo);
-        trabajadores.set(aux, t);
-        
-        empresa.getFranquicias().get(id).setListTrabajadores(trabajadores);
-                
-        llenarListaTrabajadores();
-        
-        tfNombre.setText(null);
-        tfApelidos.setText(null);
-        tfUsuario.setText(null);
-        tfPassword.setText(null);
-        tfSueldo.setText(null);
-        
-    }//GEN-LAST:event_bModificarActionPerformed
 
     private void bDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarAltaActionPerformed
         String nombre = tfNombre.getText();
@@ -297,6 +235,25 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         tfSueldo.setText(null);
     }//GEN-LAST:event_bDarAltaActionPerformed
 
+    private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
+        int aux = listTrabajadores.getSelectedIndex();
+        
+        Trabajador t = trabajadores.get(aux);
+        trabajadores.remove(aux);
+        
+        boolean DarBajaCorrecto = empresa.getFranquicias().get(id).darBajaTrabajador(t);
+        
+        if(DarBajaCorrecto == true){
+            //fez bem
+        }
+        else{
+            //fez mal
+        }
+        
+        llenarListaTrabajadores();
+        
+    }//GEN-LAST:event_bDarBajaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,20 +271,21 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ModificarTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueno_GestionarTrabajadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ModificarTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueno_GestionarTrabajadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ModificarTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueno_GestionarTrabajadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ModificarTrabajador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dueno_GestionarTrabajadores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gerente_ModificarTrabajador().setVisible(true);
+                new Dueno_GestionarTrabajadores().setVisible(true);
             }
         });
     }
@@ -335,7 +293,6 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bDarAlta;
     private javax.swing.JButton bDarBaja;
-    private javax.swing.JButton bModificar;
     private javax.swing.JButton bVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

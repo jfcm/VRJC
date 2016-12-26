@@ -49,15 +49,33 @@ public class Empresa {
     public void setGerente(Gerente gerente){
         this.gerente = gerente;
     }
+       
+    public void modificarFranquicia(int id, String nombre, String direccion, String horaApertura, String horaCierre)
+    {        
+        franquicias.get(id).setNombre(nombre);
+        franquicias.get(id).setDireccion(direccion);
+        franquicias.get(id).setHorarioApertura(horaApertura);
+        franquicias.get(id).setHorarioCierre(horaCierre);
+    }
     
-    public boolean darBajaF(String nombre)
+    public void darAltaFranquicia(String nombre, String direccion, String horaApertura, String horaCierre)
     {
+        Franquicia f = new Franquicia();
+        f.setNombre(nombre);
+        f.setDireccion(direccion);
+        f.setHorarioApertura(horaApertura);
+        f.setHorarioCierre(horaCierre);
+        franquicias.add(f);
+    }
+    
+    public boolean darBajaFranquicia(Franquicia f)
+    {        
         int flag = 0;
         int id = 0;
         
         for(Franquicia t : franquicias)
         {
-            if(t.getNombre().equals(nombre))
+            if(t.equals(f))
             {
                 flag = 1;
                 break;
@@ -74,120 +92,24 @@ public class Empresa {
         
         return true;
     }
-    
-    public boolean modificarFranq(String Nombre_fr, String Direccion, String horaApertura, String horaCierre, Dueno d, ArrayList<Trabajador> trab)
+        
+    public void modificarDueno(int id, String nombre_franq, String nombre, String password, String apelidos)
     {
-        int flag = 0;
-        int id = 0;
-        
-        for(Franquicia t : franquicias)
-        {
-            if(t.getNombre().equals(Nombre_fr))
-            {
-                flag = 1;
-                break;
-            }
-            id++;
-        }
-        
-        if(flag == 0)
-        {
-            return false;
-        }
-        
-        franquicias.get(id).setDireccion(Direccion);
-        franquicias.get(id).setHorarioApertura(horaApertura);
-        franquicias.get(id).setHorarioCierre(horaCierre);
-       
-        return true;
-    }
-    
-    public boolean darAltaFranq(Franquicia f)
-    {
-        
-        franquicias.add(f);
-        
-        return true;
-    }
-    
-    public boolean modificarDueno(String nombre_franq, String nombre, String password, String apelidos)
-    {
-        int flag = 0;
-        int id = 0;
-        
-        for(Franquicia t : franquicias)
-        {
-            if(t.getNombre().equals(nombre_franq))
-            {
-                flag = 1;
-                break;
-            }
-            id++;
-        }
-        
-        if(flag == 0)
-        {
-            return false;
-        }
-        
+        franquicias.get(id).getDueno().setApelido(apelidos);
         franquicias.get(id).getDueno().setApelido(apelidos);
         franquicias.get(id).getDueno().setPassword(password);
         franquicias.get(id).getDueno().setNombre(nombre);
-        
-        return true;
     }
     
-    public boolean darBajaDueno(String nombre_franq)
+    public boolean darBajaDueno(int id)
     {
-        int flag = 0;
-        int id = 0;
-        
-        for(Franquicia t : franquicias)
-        {
-            if(t.getNombre().equals(nombre_franq))
-            {
-                flag = 1;
-                break;
-            }
-            id++;
-        }
-        
-        if(flag == 0)
-        {
-            return false;
-        }
-        
         franquicias.get(id).setDueno(null);
         
         return true;
     }
     
-    public boolean darAltaDueno(String nombre_franq, Dueno d)
-    {
-        
-        int flag = 0;
-        int id = 0;
-        
-        for(Franquicia t : franquicias)
-        {
-            if(t.getNombre().equals(nombre_franq))
-            {
-                flag = 1;
-                break;
-            }
-            id++;
-        }
-        
-        if(flag == 0)
-        {
-            return false;
-        }
-        
-        if(franquicias.get(id).getDueno() != null)
-        {
-            darBajaDueno(nombre_franq);
-        }
-            
+    public boolean darAltaDueno(Dueno d, int id)
+    {            
         franquicias.get(id).setDueno(d);
         
         return true;
@@ -215,4 +137,5 @@ public class Empresa {
         
         return franquicias.get(id).getCatalogo();
     }
+    
 }

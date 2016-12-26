@@ -4,7 +4,7 @@ package LogicPackage;
 /**
  * This file contains the class Producto
  */
-public abstract class Producto {
+public class Producto {
 
     private String nombre;
     private String description;

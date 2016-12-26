@@ -6,29 +6,34 @@ import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
-public class Gerente_ConsultarDatos extends javax.swing.JFrame {
+public class Gerente_EligirFranquicia extends javax.swing.JFrame {
 
     ArrayList<Franquicia> franquicias;
     DefaultListModel<String> model;
     Empresa empresa;
+    int id;
+    int aux;
     
     /**
-     * Creates new form Gerente_ConsultarDatos
+     * Creates new form Gerente_ModificarDatos
      */
-    public Gerente_ConsultarDatos() {
+    public Gerente_EligirFranquicia() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Gerente");
     }
     
-    public Gerente_ConsultarDatos(Empresa empresa) {
+    public Gerente_EligirFranquicia(Empresa empresa, int aux) {
         setTitle("Ventanas y Rejas José Cándido - Gerente");
         this.empresa = empresa;
         initComponents();
-        franquicias = empresa.getFranquicias();
+        this.aux = aux;
         lennarFranquicias();
     }
-
-    private void lennarFranquicias() {               
+    
+    private void lennarFranquicias() {
+        
+        franquicias = empresa.getFranquicias();
+                
         model = new DefaultListModel<>();
 
         for (Franquicia p : franquicias) {
@@ -49,22 +54,16 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
 
         rbGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listFranquicias = new javax.swing.JList<>();
-        bRetorno = new javax.swing.JButton();
+        Nombre = new javax.swing.JLabel();
         bElegir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        bVolver = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listFranquicias = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane2.setViewportView(listFranquicias);
-
-        bRetorno.setText("Volver");
-        bRetorno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRetornoActionPerformed(evt);
-            }
-        });
+        Nombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        Nombre.setText("Elegir Franquicia");
 
         bElegir.setText("Elegir");
         bElegir.addActionListener(new java.awt.event.ActionListener() {
@@ -73,40 +72,47 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Elegir Franquicia");
+        bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVolverActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(listFranquicias);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(bRetorno, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel1)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Nombre)
+                        .addGap(131, 131, 131))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(Nombre)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bRetorno)
-                    .addComponent(bElegir))
-                .addGap(28, 28, 28))
+                    .addComponent(bElegir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,18 +129,25 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRetornoActionPerformed
-        Gerente_Menu g = new Gerente_Menu(empresa);
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
+        Gerente_Menu g = new Gerente_Menu();
         g.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_bRetornoActionPerformed
+    }//GEN-LAST:event_bVolverActionPerformed
 
     private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
-        int id = listFranquicias.getSelectedIndex();
+        id = listFranquicias.getSelectedIndex();
+        if(aux == 0){
+            Gerente_ModificarDueno g = new Gerente_ModificarDueno(empresa, id);
+            g.setVisible(true);
+            this.dispose();
+        }
+        else{
+            Gerente_ModificarTrabajador g = new Gerente_ModificarTrabajador(empresa, id);
+            g.setVisible(true);
+            this.dispose();
+        }
         
-        Gerente_ConsultarFranquicia g = new Gerente_ConsultarFranquicia(empresa, id);
-        g.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_bElegirActionPerformed
 
     /**
@@ -154,32 +167,32 @@ public class Gerente_ConsultarDatos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ConsultarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ConsultarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ConsultarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gerente_ConsultarDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gerente_EligirFranquicia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gerente_ConsultarDatos().setVisible(true);
+                new Gerente_EligirFranquicia().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Nombre;
     private javax.swing.JButton bElegir;
-    private javax.swing.JButton bRetorno;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton bVolver;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listFranquicias;
     private javax.swing.ButtonGroup rbGroup;
     // End of variables declaration//GEN-END:variables
-
 }

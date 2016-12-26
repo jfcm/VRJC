@@ -138,6 +138,11 @@ public class Franquicia {
         return lista_trabajadores;
     }
     
+    public void setListTrabajadores(ArrayList<Trabajador> lista_trabajadores)
+    {
+        this.lista_trabajadores = lista_trabajadores;
+    }
+    
     public String getNombreFranquicia()
     {
         return Nombre;
@@ -170,14 +175,14 @@ public class Franquicia {
         return true;
     }
     
-    public boolean darBajaTrabajador(String usuario)
+    public boolean darBajaTrabajador(Trabajador trabajador)
     {
         int flag = 0;
         int id = 0;
         
         for(Trabajador t : lista_trabajadores)
         {
-            if(t.getUsername().equals(usuario))
+            if(t.equals(trabajador))
             {
                 flag = 1;
                 break;
