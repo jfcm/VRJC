@@ -2,6 +2,7 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
+import javax.swing.JOptionPane;
 
 public class Gerente_LoginMenu extends javax.swing.JFrame {
 
@@ -135,12 +136,24 @@ public class Gerente_LoginMenu extends javax.swing.JFrame {
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         String nombre = tfNombre.getText();
         String password = tfPassword.getText();
-
+        
+        if (nombre.isEmpty() && password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Insertar lo nombre y password!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if(nombre.equals(empresa.getGerente().getUsername()) && password.equals(empresa.getGerente().getPassword())){
             Gerente_Menu g = new Gerente_Menu(empresa);
             g.setVisible(true);
             this.dispose();
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Nombre o password incorrecto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_bLoginActionPerformed
 
     /**

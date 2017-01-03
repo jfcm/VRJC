@@ -168,7 +168,7 @@ public class Trabajador_LoginMenu extends javax.swing.JFrame {
 
         for(Trabajador t : trabajadores){
             if(nombre.equals(t.getUsername()) && password.equals(t.getPassword())){
-                Dueno_Menu g = new Dueno_Menu(empresa, id);
+                Trabajador_Menu g = new Trabajador_Menu(empresa, id);
                 g.setVisible(true);
                 this.dispose();
             }

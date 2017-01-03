@@ -6,6 +6,7 @@ import LogicPackage.Empresa;
 public class Trabajador_Menu extends javax.swing.JFrame {
 
     Empresa empresa;    
+    int id;
     
     /**
      * Creates new form Trabajador
@@ -15,10 +16,11 @@ public class Trabajador_Menu extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido - Trabajador");
     }
     
-    public Trabajador_Menu(Empresa empresa) {
+    public Trabajador_Menu(Empresa empresa, int id) {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Trabajador");
         this.empresa = empresa;
+        this.id = id;
     }
 
     /**

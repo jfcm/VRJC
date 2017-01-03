@@ -46,11 +46,11 @@ public class Franquicia {
     }
     
     private void generarTrabajadores() {
-        Trabajador t1 = new Trabajador("Jorge", "Martins", "jorge", "123");
+        Trabajador t1 = new Trabajador("Jorge", "Martins", "jorge", "123", 500);
         lista_trabajadores.add(t1);
-        Trabajador t2 = new Trabajador("João", "Piedade", "joao", "123");
+        Trabajador t2 = new Trabajador("João", "Piedade", "joao", "123", 600);
         lista_trabajadores.add(t2);
-        Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123");
+        Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123", 450);
         lista_trabajadores.add(t3);
     }
      
