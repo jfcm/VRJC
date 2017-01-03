@@ -14,6 +14,8 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido");
         empresa = new Empresa();
+        empresa.crearCarpeta();
+        empresa.restaurarCopiaSeguridad(empresa);
     }
     
     public MainMenu(Empresa empresa) {
@@ -35,8 +37,9 @@ public class MainMenu extends javax.swing.JFrame {
         bGerente = new javax.swing.JButton();
         bDueno = new javax.swing.JButton();
         bTrabajador = new javax.swing.JButton();
-        bCliente = new javax.swing.JButton();
+        bCerrarSistema = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        bCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +64,16 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        bCerrarSistema.setText("Cerrar Sistema");
+        bCerrarSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCerrarSistemaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("Ventanas y Rejas José Cándido");
+
         bCliente.setText("Cliente");
         bCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,31 +81,30 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("VRJC");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(85, 85, 85))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(bTrabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bDueno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bGerente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel1)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                    .addComponent(bTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bDueno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bGerente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(bCerrarSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addComponent(bGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -102,7 +114,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(bTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGap(32, 32, 32)
+                .addComponent(bCerrarSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,6 +150,12 @@ public class MainMenu extends javax.swing.JFrame {
         t.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bTrabajadorActionPerformed
+
+    private void bCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSistemaActionPerformed
+        empresa.cerrarSistema(empresa);
+        setVisible(false);
+        dispose(); 
+    }//GEN-LAST:event_bCerrarSistemaActionPerformed
 
     private void bClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClienteActionPerformed
         Cliente_EligirFranquicia c = new Cliente_EligirFranquicia(empresa);
@@ -179,6 +199,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bCerrarSistema;
     private javax.swing.JButton bCliente;
     private javax.swing.JButton bDueno;
     private javax.swing.JButton bGerente;

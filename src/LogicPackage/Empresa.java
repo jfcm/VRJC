@@ -1,6 +1,14 @@
 
 package LogicPackage;
 
+import static LogicPackage.Variables.DIRECTORIO;
+import static LogicPackage.Variables.EMPRESA;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -136,6 +144,75 @@ public class Empresa {
         }
         
         return franquicias.get(id).getCatalogo();
+    }
+    
+    public int crearCarpeta(){
+        
+        String nombreDirectorio = System.getProperty("user.home");
+
+        nombreDirectorio = nombreDirectorio + File.separator + DIRECTORIO;
+
+        File directorio = new File(nombreDirectorio);
+
+        if (!directorio.exists()) {
+            try {
+                directorio.mkdir();
+            } catch (Exception e) {
+                return -1;
+            }
+        } else {
+            return 0;
+        }
+
+        return 1;
+        
+    }
+    
+    public boolean cerrarSistema(Empresa empresa){
+        
+        File directorio = new File(System.getProperty("user.home") + File.separator + DIRECTORIO);
+        FileOutputStream fout;
+        ObjectOutputStream out;
+        
+        if (!directorio.exists()) {
+            return false;
+        }
+        
+        try {
+            String filePath = directorio.getCanonicalPath() + File.separator + EMPRESA;
+            fout = new FileOutputStream(filePath);
+            out = new ObjectOutputStream(fout);
+            out.writeObject(empresa);
+            out.close();
+        } catch (IOException ex) {
+            return false;
+        }
+
+        return true;
+        
+    }
+    
+    public boolean restaurarCopiaSeguridad(Empresa empresa){
+        
+        File directorio = new File(System.getProperty("user.home") + File.separator + DIRECTORIO);
+        FileInputStream fin;
+        ObjectInputStream in;
+
+        if (!directorio.exists()) {
+            return false;
+        }
+
+        try {
+            String filePath = directorio.getCanonicalPath() + File.separator + EMPRESA;
+            fin = new FileInputStream(filePath);
+            in = new ObjectInputStream(fin);
+            empresa = (Empresa) in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            return false;
+        }
+
+        return true;
+        
     }
     
 }
