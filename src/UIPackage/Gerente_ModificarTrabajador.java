@@ -6,6 +6,7 @@ import LogicPackage.Franquicia;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
 
@@ -220,18 +221,17 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         
         int aux = listTrabajadores.getSelectedIndex();
         
+        if(listTrabajadores.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Trabajador!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         Trabajador t = trabajadores.get(aux);
         trabajadores.remove(aux);
         
         boolean DarBajaCorrecto = empresa.getFranquicias().get(id).darBajaTrabajador(t);
-        
-        if(DarBajaCorrecto == true){
-            //fez bem
-        }
-        else{
-            //fez mal
-        }
-        
+            
         llenarListaTrabajadores();
         
     }//GEN-LAST:event_bDarBajaActionPerformed
@@ -240,15 +240,26 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         
         int aux = listTrabajadores.getSelectedIndex();
         
+        if(listTrabajadores.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Trabajador!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         String nombre = tfNombre.getText();
         String apelidos = tfApelidos.getText();
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
         String sueldo_aux = tfSueldo.getText();
         float sueldo = Float.parseFloat(sueldo_aux);
+        
+        if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
 
-        Trabajador t = new Trabajador(nombre, apelidos, usuario, password);
-        t.setSaldo(sueldo);
+        Trabajador t = new Trabajador(nombre, apelidos, usuario, password, sueldo);
         trabajadores.set(aux, t);
         
         empresa.getFranquicias().get(id).setListTrabajadores(trabajadores);
@@ -271,17 +282,15 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         String sueldo_aux = tfSueldo.getText();
         float sueldo = Float.parseFloat(sueldo_aux);
         
-        Trabajador t = new Trabajador(nombre, apelidos, usuario, password);
-        t.setSaldo(sueldo);
+        if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        
+        Trabajador t = new Trabajador(nombre, apelidos, usuario, password, sueldo);
         boolean aux = empresa.getFranquicias().get(id).darAltaTrabajador(t);
-        
-        if(aux == true){
-            //fez bem
-        }
-        else{
-            //fez mal
-        }
-        
+       
         model = new DefaultListModel<>();
 
         for (Trabajador p : trabajadores) {

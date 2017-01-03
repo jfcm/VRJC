@@ -8,6 +8,7 @@ import LogicPackage.Producto;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
@@ -181,7 +182,13 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
     private void bConsultarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarDatosActionPerformed
             
         int aux = listDatos.getSelectedIndex();
-              
+                      
+        if(listDatos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una persona!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (rbDueno.isSelected() == true){
             taDatos.setText("Nombre: " + dueno.getNombre() + 
                             "\n\nApelidos: " + dueno.getApelido() + 

@@ -5,6 +5,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Dueno_LoginMenu extends javax.swing.JFrame {
 
@@ -161,13 +162,29 @@ public class Dueno_LoginMenu extends javax.swing.JFrame {
 
         int id = listFranquicias.getSelectedIndex();
         
+        if(listFranquicias.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una Franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         String nombre = tfNombre.getText();
         String password = tfPassword.getText();
+        
+        if (nombre.isEmpty() && password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Insertar lo nombre y password!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         if(nombre.equals(franquicias.get(id).getDueno().getUsername()) && password.equals(franquicias.get(id).getDueno().getPassword())){
             Dueno_Menu g = new Dueno_Menu(empresa, id);
             g.setVisible(true);
             this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Nombre o password incorrecto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_bLoginActionPerformed

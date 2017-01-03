@@ -8,6 +8,7 @@ import LogicPackage.RejaPreconfigurada;
 import LogicPackage.VentanaPreconfigurada;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Dueno_GestionarProductos extends javax.swing.JFrame {
 
@@ -263,6 +264,12 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         int aux = listaProductos.getSelectedIndex();
         int flag = 0;
         
+        if(listaProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         String nombre = tfNombre.getText();
         String description = tfDescription.getText();
         String precioVenta_aux = tfPrecioVenta.getText();
@@ -274,11 +281,22 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         double alto = Double.parseDouble(alto_aux);
         double ancho = Double.parseDouble(ancho_aux);
         
+        if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        
         if(rbPieza.isSelected()){
             Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.set(aux, p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
         }
         
         if(rbVentana.isSelected()){
@@ -287,12 +305,22 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         if(rbReja.isSelected()){
             Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.set(aux, p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
         }
         
         if(flag == 1){
@@ -323,11 +351,22 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         double alto = Double.parseDouble(alto_aux);
         double ancho = Double.parseDouble(ancho_aux);
         
+        if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        
         if(rbPieza.isSelected()){
             Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.add(p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
         }
         
         if(rbVentana.isSelected()){
@@ -336,12 +375,22 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         if(rbReja.isSelected()){
             Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.add(p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
         }
         
         if(flag == 1){
@@ -359,6 +408,12 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
         
         int aux = listaProductos.getSelectedIndex();
+        
+        if(listaProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
         
         Producto p = productos.get(aux);
         productos.remove(p);

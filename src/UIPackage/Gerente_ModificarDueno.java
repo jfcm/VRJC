@@ -6,6 +6,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Gerente_ModificarDueno extends javax.swing.JFrame {
 
@@ -207,6 +208,18 @@ public class Gerente_ModificarDueno extends javax.swing.JFrame {
         String apelidos = tfApelidos.getText();
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
+        
+        if(listDueno.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Dueño!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
+        if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
 
         dueno = new Dueno(nombre, apelidos, usuario, password);
         empresa.modificarDueno(id, nombre, nombre, password, apelidos);
@@ -225,6 +238,12 @@ public class Gerente_ModificarDueno extends javax.swing.JFrame {
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
         
+        if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         dueno = new Dueno(nombre, apelidos, usuario, password);        
         empresa.darAltaDueno(dueno, id);
         
@@ -237,6 +256,12 @@ public class Gerente_ModificarDueno extends javax.swing.JFrame {
     }//GEN-LAST:event_bDarAltaActionPerformed
 
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
+        
+        if(listDueno.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir el Dueño!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
         
         dueno = null;
         empresa.darBajaDueno(id);

@@ -5,6 +5,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
 
@@ -209,17 +210,16 @@ public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
         String sueldo_aux = tfSueldo.getText();
         float sueldo = Float.parseFloat(sueldo_aux);
         
+        if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        
         Trabajador t = new Trabajador(nombre, apelidos, usuario, password);
         t.setSaldo(sueldo);
         boolean aux = empresa.getFranquicias().get(id).darAltaTrabajador(t);
-        
-        if(aux == true){
-            //fez bem
-        }
-        else{
-            //fez mal
-        }
-        
+                
         model = new DefaultListModel<>();
 
         for (Trabajador p : trabajadores) {
@@ -237,6 +237,13 @@ public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
 
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
         int aux = listTrabajadores.getSelectedIndex();
+        
+        if(listTrabajadores.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un Trabajador!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         
         Trabajador t = trabajadores.get(aux);
         trabajadores.remove(aux);

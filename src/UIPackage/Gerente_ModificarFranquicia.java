@@ -5,6 +5,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Gerente_ModificarFranquicia extends javax.swing.JFrame {
 
@@ -204,10 +205,22 @@ public class Gerente_ModificarFranquicia extends javax.swing.JFrame {
         
         int id = listFranquicias.getSelectedIndex();
         
+        if(listFranquicias.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }   
+        
         String nombre = tfNombre.getText();
         String Direccion = tfDireccion.getText();
         String horaApertura = tfApertura.getText();
         String horaCierre = tfCierre.getText();
+        
+        if(nombre.isEmpty() || Direccion.isEmpty() || horaApertura.isEmpty() || horaCierre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
         
         empresa.modificarFranquicia(id, nombre, Direccion, horaApertura, horaCierre);
         
@@ -225,6 +238,12 @@ public class Gerente_ModificarFranquicia extends javax.swing.JFrame {
         String horaApertura = tfApertura.getText();
         String horaCierre = tfCierre.getText();
         
+        if(nombre.isEmpty() || Direccion.isEmpty() || horaApertura.isEmpty() || horaCierre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
         empresa.darAltaFranquicia(nombre, Direccion, horaApertura, horaCierre);
         franquicias = empresa.getFranquicias();
         
@@ -239,6 +258,12 @@ public class Gerente_ModificarFranquicia extends javax.swing.JFrame {
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
         
         int aux = listFranquicias.getSelectedIndex();
+        
+        if(listFranquicias.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }   
         
         Franquicia f = franquicias.get(aux);
         franquicias.remove(aux);
