@@ -16,7 +16,7 @@ public class Empresa {
     {
         this.nombre = null;
         this.franquicias = new ArrayList<>();
-        gerente = new Gerente("Jovana", "milozevic", "jovana_mil", "913037795");
+        gerente = new Gerente("admin", "admin", "admin", "123");
         Franquicia f = new Franquicia();
         franquicias.add(f);
     }
