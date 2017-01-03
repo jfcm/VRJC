@@ -65,7 +65,7 @@ public class Cliente_EligirFranquicia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Nombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        Nombre.setText("Elegir Franquicia");
+        Nombre.setText("Cliente - Elegir Franquicia");
 
         bElegir.setText("Elegir");
         bElegir.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class Cliente_EligirFranquicia extends javax.swing.JFrame {
                         .addGap(54, 54, 54))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Nombre)
-                        .addGap(131, 131, 131))))
+                        .addGap(85, 85, 85))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
