@@ -33,9 +33,9 @@ public class Cliente_Compras extends javax.swing.JFrame {
     private void llenarProductos(){
         model = new DefaultListModel<>();
         
-        for (Producto p : empresa.getFranquicias().get(0).getCompras()) {     
+        for (Producto p : empresa.getFranquicias().get(id).getCompras()) {     
             
-                model.addElement(p.getNombre());    
+                model.addElement(p.getDescription());    
                 
         }
         Lprodutos.setModel(model);
@@ -94,6 +94,11 @@ public class Cliente_Compras extends javax.swing.JFrame {
         });
 
         BfinalizarCompras.setText("Finalizar Compras");
+        BfinalizarCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BfinalizarComprasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,6 +193,13 @@ public class Cliente_Compras extends javax.swing.JFrame {
                                  "\n\nAlto: " + alto +
                                  "\n\nAncho: " + ancho);
     }//GEN-LAST:event_BverActionPerformed
+
+    private void BfinalizarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfinalizarComprasActionPerformed
+        //Trabajador_F_Compras c = new Trabajador_F_Compras(empresa, id);
+        Trabajador_LoginMenu l = new Trabajador_LoginMenu(empresa, id, 1);
+        l.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BfinalizarComprasActionPerformed
 
     /**
      * @param args the command line arguments

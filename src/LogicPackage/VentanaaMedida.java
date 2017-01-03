@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class VentanaaMedida
  */
-public class VentanaaMedida extends VentanaPreconfigurada {
+public class VentanaaMedida extends VentanaPreconfigurada implements Serializable{
     
     private double nuevoAlto;
     private double nuevoAncho;

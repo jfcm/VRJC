@@ -1,12 +1,13 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * This file contains the class Catalogo
  */
-public class Catalogo implements Variables {
+public class Catalogo implements Serializable, Variables {
 
     private ArrayList<Producto> listaproductos;
     
@@ -90,5 +91,27 @@ public class Catalogo implements Variables {
 
         return buscaProduto;
     }
+
+    public ArrayList<Producto> ordenaNumero(ArrayList<Producto> p)
+    {
+        this.listaproductos = p;
+        
+        Producto tmp;
+        
+        for (int i = 0; i < listaproductos.size(); i++) {
+
+            for (int j = listaproductos.size() - 1; j > i; j--) {
+              
+                if(listaproductos.get(i).getPrecioVenta() > listaproductos.get(j).getPrecioVenta()){
+
+                  tmp = listaproductos.get(i);
+                  listaproductos.set(i,listaproductos.get(j)) ;
+                  listaproductos.set(j,tmp);
+                }
+            } 
+        }
+        return listaproductos;
+    }   
+    
     
 }

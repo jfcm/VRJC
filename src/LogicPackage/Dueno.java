@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class Dueno
  */
-public class Dueno extends Persona {
+public class Dueno extends Persona implements Serializable {
    
     public Dueno(String nombre, String apelidos, String usuario, String password)
     {

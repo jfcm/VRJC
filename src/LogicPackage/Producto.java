@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class Producto
  */
-public class Producto {
+public class Producto implements Serializable {
 
     private String nombre;
     private String description;

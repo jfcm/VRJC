@@ -287,16 +287,17 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             return;
         } 
         
+        if(!rbPieza.isSelected() && !rbVentana.isSelected() && !rbReja.isSelected()){
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if(rbPieza.isSelected()){
             Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.set(aux, p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
         }
         
         if(rbVentana.isSelected()){
@@ -305,22 +306,12 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
-        }
         
         if(rbReja.isSelected()){
             Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
             productos.set(aux, p);
             empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
             flag = 1;
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
-                    JOptionPane.WARNING_MESSAGE);
-            return;
         }
         
         if(flag == 1){

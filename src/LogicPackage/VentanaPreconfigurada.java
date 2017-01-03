@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class VentanaPreconfigurada
  */
-public class VentanaPreconfigurada extends Producto {
+public class VentanaPreconfigurada extends Producto implements Serializable{
     
     private double precioInstalacion;
     private int numeroHojas;

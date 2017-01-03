@@ -7,7 +7,7 @@ package LogicPackage;
 public interface Variables {
     
     public static final String DIRECTORIO = "VRJC";
-    public static final String EMPRESA = "Livro de receitas";
+    public static final String EMPRESA = "Empresa";
     
     public String REJA = "REJA";
     public String VENTANA = "VENTANA";

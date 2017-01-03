@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class Trabajador
  */
-public class Trabajador extends Persona {
+public class Trabajador extends Persona implements Serializable{
     
     private float Sueldo;
     

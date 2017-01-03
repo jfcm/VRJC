@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class RejaPreconfigurada
  */
-public class RejaPreconfigurada extends Producto {
+public class RejaPreconfigurada extends Producto implements Serializable{
 
     private double precioInstalacion;
     private int numeroBarrotes;

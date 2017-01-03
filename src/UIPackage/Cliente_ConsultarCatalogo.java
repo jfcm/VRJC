@@ -212,25 +212,14 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     private void BordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BordenarActionPerformed
 
-        ArrayList<Producto> arraylist = empresa.getFranquicias().get(0).getCatalogo().getListaProductos();
+        ArrayList<Producto> arraylist = empresa.getFranquicias().get(id).getCatalogo().getListaProductos();
         Producto tmp;
         
-        for (int i = 0; i < arraylist.size(); i++) {
-
-            for (int j = arraylist.size() - 1; j > i; j--) {
-              
-                if(arraylist.get(i).getPrecioVenta() > arraylist.get(j).getPrecioVenta()){
-
-                  tmp = arraylist.get(i);
-                  arraylist.set(i,arraylist.get(j)) ;
-                  arraylist.set(j,tmp);
-                }
-            } 
-        }
+        ArrayList<Producto> p1 = empresa.getFranquicias().get(id).getCatalogo().ordenaNumero(arraylist);
         
         model = new DefaultListModel<>();
 
-        for (Producto p : arraylist){
+        for (Producto p : p1){
             model.addElement(p.getDescription());
         }
 

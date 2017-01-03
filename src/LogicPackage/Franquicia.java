@@ -1,12 +1,13 @@
     
 package LogicPackage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * This file contains the class Franquicia
  */
-public class Franquicia {
+public class Franquicia implements Serializable {
     
     private String Nombre;
     private String Direccion;

@@ -2,6 +2,13 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
+import LogicPackage.Franquicia;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class MainMenu extends javax.swing.JFrame {
 
@@ -15,7 +22,7 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido");
         empresa = new Empresa();
         empresa.crearCarpeta();
-        empresa.restaurarCopiaSeguridad(empresa);
+        restaurarCopiaSeguridad();
     }
     
     public MainMenu(Empresa empresa) {
@@ -36,7 +43,6 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bGerente = new javax.swing.JButton();
         bDueno = new javax.swing.JButton();
-        bTrabajador = new javax.swing.JButton();
         bCerrarSistema = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bCliente = new javax.swing.JButton();
@@ -54,13 +60,6 @@ public class MainMenu extends javax.swing.JFrame {
         bDueno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bDuenoActionPerformed(evt);
-            }
-        });
-
-        bTrabajador.setText("Trabajador");
-        bTrabajador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bTrabajadorActionPerformed(evt);
             }
         });
 
@@ -92,7 +91,6 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bTrabajador, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bDueno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bGerente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,12 +109,10 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(bDueno, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(bCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(bCerrarSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,14 +141,8 @@ public class MainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_bDuenoActionPerformed
 
-    private void bTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTrabajadorActionPerformed
-        Trabajador_LoginMenu t = new Trabajador_LoginMenu(empresa);
-        t.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_bTrabajadorActionPerformed
-
     private void bCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSistemaActionPerformed
-        empresa.cerrarSistema(empresa);
+        cerrarSistema();
         setVisible(false);
         dispose(); 
     }//GEN-LAST:event_bCerrarSistemaActionPerformed
@@ -163,6 +153,56 @@ public class MainMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_bClienteActionPerformed
 
+    public boolean cerrarSistema(){
+        
+        String filePath = "C:\\VRJC\\file.bin";
+        String filePath1 = "C:\\VRJC";
+        FileOutputStream fout;
+        ObjectOutputStream out;
+        File directorio = new File(filePath1);
+        
+        if (!directorio.exists()) {
+            return false;
+        }
+                       
+        try {
+            fout = new FileOutputStream(filePath);
+            out = new ObjectOutputStream(fout);
+            out.writeObject(empresa);
+            out.close();
+        } catch (IOException ex) {
+            return false;
+        }
+
+        return true;
+        
+    }
+    
+    public boolean restaurarCopiaSeguridad(){
+        
+        String filePath = "C:\\VRJC\\file.bin";
+        String filePath1 = "C:\\VRJC";
+        FileInputStream fin;
+        ObjectInputStream in;
+        File directorio = new File(filePath1);
+        
+        if (!directorio.exists()) {
+            return false;
+        }
+                
+        try {
+            fin = new FileInputStream(filePath);
+            in = new ObjectInputStream(fin);
+            empresa = (Empresa) in.readObject();
+            in.close();
+        } catch (IOException | ClassNotFoundException ex) {
+            return false;
+        }
+
+        return true;
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -203,7 +243,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton bCliente;
     private javax.swing.JButton bDueno;
     private javax.swing.JButton bGerente;
-    private javax.swing.JButton bTrabajador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

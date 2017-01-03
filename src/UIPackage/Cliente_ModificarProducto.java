@@ -152,12 +152,8 @@ public class Cliente_ModificarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_BVolverActionPerformed
 
     private void BmodificarAltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmodificarAltoActionPerformed
-        ///////////////////////// a modificar////////////////////////////////
         ModificaProducto();
-        
-        empresa.getFranquicias().get(id).getCompras().add(p);
-       
-        Cliente_Compras s = new Cliente_Compras(empresa, id);
+        Trabajador_LoginMenu s = new Trabajador_LoginMenu(empresa, id, p);
         s.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BmodificarAltoActionPerformed

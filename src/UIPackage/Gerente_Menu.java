@@ -55,6 +55,11 @@ public class Gerente_Menu extends javax.swing.JFrame {
         });
 
         bRestaurarCopia.setText("Restaurar Copia de Seguridad");
+        bRestaurarCopia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRestaurarCopiaActionPerformed(evt);
+            }
+        });
 
         bRetorno.setText("Volver");
         bRetorno.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +138,10 @@ public class Gerente_Menu extends javax.swing.JFrame {
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bModificarDatosActionPerformed
+
+    private void bRestaurarCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRestaurarCopiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bRestaurarCopiaActionPerformed
 
     /**
      * @param args the command line arguments

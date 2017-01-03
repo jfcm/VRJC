@@ -1,20 +1,16 @@
 
 package LogicPackage;
 
-import static LogicPackage.Variables.DIRECTORIO;
-import static LogicPackage.Variables.EMPRESA;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * This file contains the class Empresa
  */
-public class Empresa {
+public class Empresa implements Serializable {
     
     private String nombre;
     private ArrayList<Franquicia> franquicias;
@@ -56,6 +52,10 @@ public class Empresa {
     
     public void setGerente(Gerente gerente){
         this.gerente = gerente;
+    }
+    
+    public void setFranquicias(ArrayList<Franquicia> franquicias){
+        this.franquicias = franquicias;
     }
        
     public void modificarFranquicia(int id, String nombre, String direccion, String horaApertura, String horaCierre)
@@ -145,14 +145,14 @@ public class Empresa {
         
         return franquicias.get(id).getCatalogo();
     }
-    
-    public int crearCarpeta(){
         
-        String nombreDirectorio = System.getProperty("user.home");
-
-        nombreDirectorio = nombreDirectorio + File.separator + DIRECTORIO;
-
-        File directorio = new File(nombreDirectorio);
+    public int crearCarpeta()
+    {
+        
+        String filePath = "C:\\VRJC";
+        FileOutputStream fout;
+        ObjectOutputStream out;
+        File directorio = new File(filePath);
 
         if (!directorio.exists()) {
             try {
@@ -166,53 +166,23 @@ public class Empresa {
 
         return 1;
         
-    }
+    }   
     
-    public boolean cerrarSistema(Empresa empresa){
+    public void ordenaFranquicia(ArrayList<Franquicia> f)
+    {
+        this.franquicias = f;
         
-        File directorio = new File(System.getProperty("user.home") + File.separator + DIRECTORIO);
-        FileOutputStream fout;
-        ObjectOutputStream out;
+        int tamanho = franquicias.size();
         
-        if (!directorio.exists()) {
-            return false;
+        for (int i = 0; i < tamanho - 1; i++) {
+            for (int j = 0; j < tamanho - 1 - i; j++) {
+                if(franquicias.get(i).getNombre().compareTo(franquicias.get(j+1).getNombre())>0) { 
+                    Franquicia g = franquicias.get(j);
+                    franquicias.set(j, franquicias.get(j+1));
+                    franquicias.set(j+1, g);
+                }
+            }
         }
-        
-        try {
-            String filePath = directorio.getCanonicalPath() + File.separator + EMPRESA;
-            fout = new FileOutputStream(filePath);
-            out = new ObjectOutputStream(fout);
-            out.writeObject(empresa);
-            out.close();
-        } catch (IOException ex) {
-            return false;
-        }
-
-        return true;
-        
     }
-    
-    public boolean restaurarCopiaSeguridad(Empresa empresa){
-        
-        File directorio = new File(System.getProperty("user.home") + File.separator + DIRECTORIO);
-        FileInputStream fin;
-        ObjectInputStream in;
 
-        if (!directorio.exists()) {
-            return false;
-        }
-
-        try {
-            String filePath = directorio.getCanonicalPath() + File.separator + EMPRESA;
-            fin = new FileInputStream(filePath);
-            in = new ObjectInputStream(fin);
-            empresa = (Empresa) in.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            return false;
-        }
-
-        return true;
-        
-    }
-    
 }

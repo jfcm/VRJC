@@ -1,10 +1,12 @@
 
 package LogicPackage;
 
+import java.io.Serializable;
+
 /**
  * This file contains the class Persona
  */
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     private String nombre;
     private String apelido;
     private String usuario;
