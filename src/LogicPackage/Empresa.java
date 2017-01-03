@@ -21,9 +21,60 @@ public class Empresa implements Serializable {
         this.nombre = null;
         this.franquicias = new ArrayList<>();
         gerente = new Gerente("admin", "admin", "admin", "123");
-        Franquicia f = new Franquicia();
-        franquicias.add(f);
+        llenarfranquicias();
     }
+        
+    private void llenarfranquicias() {
+        
+        //1ª Franquicia
+        Dueno dueno = new Dueno("Juan", "Marques", "juan", "123");
+        ArrayList<Trabajador> trabajadores = new ArrayList<>();
+        Trabajador t1 = new Trabajador("Jorge", "Martins", "jorge", "123", 500);
+        trabajadores.add(t1);
+        Trabajador t2 = new Trabajador("João", "Piedade", "joao", "123", 600);
+        trabajadores.add(t2);
+        Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123", 450);
+        trabajadores.add(t3);
+        Franquicia f = new Franquicia(dueno, trabajadores, "VRJC - Madrid", "Madrid", "09h00", "18h00", 0, 0);
+        franquicias.add(f);
+        
+        //2ª Franquicia
+        dueno = new Dueno("Rui", "Fernandez", "rui", "123");
+        trabajadores = new ArrayList<>();
+        t1 = new Trabajador("Gonzalo", "Martinez", "gonzalo", "123", 500);
+        trabajadores.add(t1);
+        t2 = new Trabajador("Juan", "Jegundo", "jegundo", "123", 600);
+        trabajadores.add(t2);
+        t3 = new Trabajador("Irene", "Teresa", "irene", "123", 450);
+        trabajadores.add(t3);
+        f = new Franquicia(dueno, trabajadores, "VRJC - Barcelona", "Barcelona", "09h00", "17h00", 0, 0);
+        franquicias.add(f);
+        
+        //3ª Franquicia
+        dueno = new Dueno("Jose", "Miguel", "jose", "123");
+        trabajadores = new ArrayList<>();
+        t1 = new Trabajador("Gustavo", "Andrade", "gustavo", "123", 500);
+        trabajadores.add(t1);
+        t2 = new Trabajador("Nuno", "Paiva", "nuno", "123", 600);
+        trabajadores.add(t2);
+        t3 = new Trabajador("Carlos", "Fonseca", "carlos", "123", 450);
+        trabajadores.add(t3);
+        f = new Franquicia(dueno, trabajadores, "VRJC - Salamanca", "Salamanca", "09h00", "17h00", 0, 0);
+        franquicias.add(f);
+        
+        //4ª Franquicia
+        dueno = new Dueno("Pedro", "Piedade", "pedro", "123");
+        trabajadores = new ArrayList<>();
+        t1 = new Trabajador("Claudio", "Fonseca", "claudio", "123", 500);
+        trabajadores.add(t1);
+        t2 = new Trabajador("Antoine", "Massart", "antoine", "123", 600);
+        trabajadores.add(t2);
+        t3 = new Trabajador("Pedro", "Esteves", "esteves", "123", 450);
+        trabajadores.add(t3);
+        f = new Franquicia(dueno, trabajadores, "VRJC - Valência", "Valência", "09h00", "17h00", 0, 0);
+        franquicias.add(f);
+               
+    }    
     
     public Empresa(ArrayList<Franquicia> franquicias, String nombre, Gerente gerente)
     {

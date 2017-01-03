@@ -21,17 +21,11 @@ public class Franquicia implements Serializable {
     private Catalogo cat;
     
     public Franquicia(){
-        dueno = new Dueno("João", "Piedade", "joao_piedade", "913037795");
         lista_trabajadores = new ArrayList<>();
         compras = new ArrayList<>();
-        Nombre = "VRJC";
-        Direccion = "Madrid";
-        horaApertura = "09:00";
-        horaCierre = "18:00";
         n_total_p_vendidos = 0;
         ventas_totales = 0;
         cat = new Catalogo();
-        generarTrabajadores();
     }
     
     public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, float ventas_totales){
@@ -44,6 +38,7 @@ public class Franquicia implements Serializable {
         this.n_total_p_vendidos = n_total_p_vendidos;
         this.ventas_totales = ventas_totales;
         compras = new ArrayList<>();
+        cat = new Catalogo();
     }
     
     private void generarTrabajadores() {

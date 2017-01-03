@@ -2,9 +2,7 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
-import LogicPackage.Franquicia;
 import LogicPackage.Producto;
-import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 

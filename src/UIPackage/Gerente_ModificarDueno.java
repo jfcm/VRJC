@@ -36,8 +36,13 @@ public class Gerente_ModificarDueno extends javax.swing.JFrame {
     private void llenarDueno(int flag){
         model = new DefaultListModel<>();
 
-        if(flag == 1){
-            model.addElement(dueno.getNombre());
+        Dueno n = null;
+        n = empresa.getFranquicias().get(id).getDueno();
+        
+        if(n != null){
+            if(flag == 1){
+                model.addElement(dueno.getNombre());
+            }
         }
         
         listDueno.setModel(model);
