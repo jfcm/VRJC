@@ -13,19 +13,19 @@ import javax.swing.DefaultListModel;
  *
  * @author joaom
  */
-public class Trabajador_MenuProdutotosAmedida extends javax.swing.JFrame {
+public class Trabajador_MenuProdutosAMedida extends javax.swing.JFrame {
     
     Empresa e;
     int id;
     Producto p;
     DefaultListModel<String> model;
     
-    public Trabajador_MenuProdutotosAmedida() {
+    public Trabajador_MenuProdutosAMedida() {
         initComponents();
         setTitle("Ventanas y Rejas José Cándido - Trabajador");
     }
     
-    public Trabajador_MenuProdutotosAmedida(Empresa e, int id, Producto p) {
+    public Trabajador_MenuProdutosAMedida(Empresa e, int id, Producto p) {
         this.e = e;
         this.id = id;
         this.p = p;
@@ -168,21 +168,23 @@ public class Trabajador_MenuProdutotosAmedida extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Trabajador_MenuProdutotosAmedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_MenuProdutosAMedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Trabajador_MenuProdutotosAmedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_MenuProdutosAMedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Trabajador_MenuProdutotosAmedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_MenuProdutosAMedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Trabajador_MenuProdutotosAmedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_MenuProdutosAMedida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Trabajador_MenuProdutotosAmedida().setVisible(true);
+                new Trabajador_MenuProdutosAMedida().setVisible(true);
             }
         });
     }

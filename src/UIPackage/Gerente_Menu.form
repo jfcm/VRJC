@@ -42,9 +42,10 @@
                   <EmptySpace pref="112" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="bRestaurarCopia" max="32767" attributes="0"/>
+                          <Component id="bHacerCopia" max="32767" attributes="0"/>
                           <Component id="bModificarDatos" max="32767" attributes="0"/>
                           <Component id="bConsultarDatos" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="bRestaurarCopia" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -65,13 +66,15 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bConsultarDatos" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bModificarDatos" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="bHacerCopia" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bRestaurarCopia" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace pref="21" max="32767" attributes="0"/>
                   <Component id="bRetorno" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -95,12 +98,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModificarDatosActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bRestaurarCopia">
+        <Component class="javax.swing.JButton" name="bHacerCopia">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Restaurar Copia de Seguridad"/>
+            <Property name="text" type="java.lang.String" value="Hacer Copia de Seguridad"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRestaurarCopiaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bHacerCopiaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bRetorno">
@@ -118,6 +121,14 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Gerente"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="bRestaurarCopia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Restaurar Copia de Seguridad"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRestaurarCopiaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

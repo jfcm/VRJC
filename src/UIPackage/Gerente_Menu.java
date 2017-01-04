@@ -2,6 +2,11 @@
 package UIPackage;
 
 import LogicPackage.Empresa;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
 
 public class Gerente_Menu extends javax.swing.JFrame {
     
@@ -34,9 +39,10 @@ public class Gerente_Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bConsultarDatos = new javax.swing.JButton();
         bModificarDatos = new javax.swing.JButton();
-        bRestaurarCopia = new javax.swing.JButton();
+        bHacerCopia = new javax.swing.JButton();
         bRetorno = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        bRestaurarCopia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,10 +60,10 @@ public class Gerente_Menu extends javax.swing.JFrame {
             }
         });
 
-        bRestaurarCopia.setText("Restaurar Copia de Seguridad");
-        bRestaurarCopia.addActionListener(new java.awt.event.ActionListener() {
+        bHacerCopia.setText("Hacer Copia de Seguridad");
+        bHacerCopia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bRestaurarCopiaActionPerformed(evt);
+                bHacerCopiaActionPerformed(evt);
             }
         });
 
@@ -71,6 +77,13 @@ public class Gerente_Menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Gerente");
 
+        bRestaurarCopia.setText("Restaurar Copia de Seguridad");
+        bRestaurarCopia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRestaurarCopiaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,9 +92,10 @@ public class Gerente_Menu extends javax.swing.JFrame {
                 .addContainerGap(112, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(bRestaurarCopia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bHacerCopia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bModificarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bConsultarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bConsultarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bRestaurarCopia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(bRetorno)))
@@ -96,13 +110,15 @@ public class Gerente_Menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(bConsultarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bModificarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(bHacerCopia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(bRestaurarCopia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(bRetorno)
                 .addGap(26, 26, 26))
         );
@@ -139,10 +155,63 @@ public class Gerente_Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_bModificarDatosActionPerformed
 
+    private void bHacerCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHacerCopiaActionPerformed
+        boolean aux = hacerCopia();
+        if(aux == false){
+            JOptionPane.showMessageDialog(null, "Error ao crear lo fichero.", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Copia realizada con éxito.", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_bHacerCopiaActionPerformed
+
     private void bRestaurarCopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRestaurarCopiaActionPerformed
-        // TODO add your handling code here:
+        Gerente_RestaurarCopia m = new Gerente_RestaurarCopia(empresa);
+        m.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bRestaurarCopiaActionPerformed
 
+    private boolean hacerCopia() {
+        
+        File folder = new File("C:\\VRJC");
+        String[] listOfFiles = folder.list();
+        String filename;
+        if(listOfFiles.length > 0){
+            int i;
+            String num;
+            for (i = 0; i < listOfFiles.length; i++) { }
+            num = String.valueOf(i);
+            filename = "file" + num + ".bin";
+        }
+        else{
+            filename = "file0.bin";
+        }
+        
+        String filePath1 = "C:\\VRJC";
+        String filePath = filePath1 + "\\" + filename;
+        FileOutputStream fout;
+        ObjectOutputStream out;
+        File directorio = new File(filePath1);
+        
+        if (!directorio.exists()) {
+            return false;
+        }
+                       
+        try {
+            fout = new FileOutputStream(filePath);
+            out = new ObjectOutputStream(fout);
+            out.writeObject(empresa);
+            out.close();
+        } catch (IOException ex) {
+            return false;
+        }
+
+        return true;
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -181,10 +250,12 @@ public class Gerente_Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bConsultarDatos;
+    private javax.swing.JButton bHacerCopia;
     private javax.swing.JButton bModificarDatos;
     private javax.swing.JButton bRestaurarCopia;
     private javax.swing.JButton bRetorno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }

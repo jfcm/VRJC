@@ -35,9 +35,9 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
         
         model = new DefaultListModel<>();
         
-        for (Producto p : e.getFranquicias().get(0).getCompras()) {     
+        for (Producto p : e.getFranquicias().get(id).getCompras()) {     
             
-                model.addElement(p.getNombre());    
+                model.addElement(p.getDescription());    
                 
         }
         ListCompras.setModel(model);
@@ -66,6 +66,11 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ListCompras);
 
         bDarBaja.setText("Dar Baja Productos");
+        bDarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDarBajaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,6 +115,10 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bDarBajaActionPerformed
 
     /**
      * @param args the command line arguments

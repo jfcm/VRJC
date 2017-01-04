@@ -1,14 +1,18 @@
 
 package UIPackage;
 
+import LogicPackage.CatalogoGeneralObject;
 import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
+import LogicPackage.Producto;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class MainMenu extends javax.swing.JFrame {
 
@@ -22,7 +26,7 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle("Ventanas y Rejas José Cándido");
         empresa = new Empresa();
         empresa.crearCarpeta();
-        restaurarCopiaSeguridad();
+        restaurarUltimaCopia();
     }
     
     public MainMenu(Empresa empresa) {
@@ -155,7 +159,11 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bDuenoActionPerformed
 
     private void bCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSistemaActionPerformed
-        cerrarSistema();
+        boolean aux = cerrarSistema();
+        if(aux == false){
+             JOptionPane.showMessageDialog(null, "Error ao crear lo fichero.", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        }
         setVisible(false);
         dispose(); 
     }//GEN-LAST:event_bCerrarSistemaActionPerformed
@@ -167,13 +175,41 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bClienteActionPerformed
 
     private void bCatalogoGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCatalogoGeneralActionPerformed
-        // TODO add your handling code here:
+        ArrayList<CatalogoGeneralObject> a = new ArrayList<>();
+        
+        for(int i = 0; i < empresa.getFranquicias().size(); i++)
+        {
+            
+            for(Producto p : empresa.getFranquicias().get(i).getCatalogo().getListaProductos())
+            {
+                CatalogoGeneralObject e = new CatalogoGeneralObject( empresa.getFranquicias().get(i).getNombreFranquicia(), p);
+                a.add(e);
+            }
+        }
+        
+        Catalogo_General n = new Catalogo_General(empresa, a);
+        n.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bCatalogoGeneralActionPerformed
 
     public boolean cerrarSistema(){
         
-        String filePath = "C:\\VRJC\\file.bin";
+        File folder = new File("C:\\VRJC");
+        String[] listOfFiles = folder.list();
+        String filename;
+        if(listOfFiles.length > 0){
+            int i;
+            String num;
+            for (i = 0; i < listOfFiles.length; i++) { }
+            num = String.valueOf(i);
+            filename = "file" + num + ".bin";
+        }
+        else{
+            filename = "file0.bin";
+        }
+        
         String filePath1 = "C:\\VRJC";
+        String filePath = filePath1 + "\\" + filename;
         FileOutputStream fout;
         ObjectOutputStream out;
         File directorio = new File(filePath1);
@@ -195,14 +231,28 @@ public class MainMenu extends javax.swing.JFrame {
         
     }
     
-    public boolean restaurarCopiaSeguridad(){
+    public boolean restaurarUltimaCopia(){
         
-        String filePath = "C:\\VRJC\\file.bin";
+        File folder = new File("C:\\VRJC");
+        String[] listOfFiles = folder.list();
+        String filename;
+        if(listOfFiles.length > 0){
+            int i;
+            String num;
+            for (i = 0; i < listOfFiles.length; i++) { }
+            num = String.valueOf(i);
+            filename = "file" + num + ".bin";
+        }
+        else{
+            filename = "file0.bin";
+        }
+        
         String filePath1 = "C:\\VRJC";
+        String filePath = filePath1 + "\\" + filename;
+        File directorio = new File(filePath1);
         FileInputStream fin;
         ObjectInputStream in;
-        File directorio = new File(filePath1);
-        
+               
         if (!directorio.exists()) {
             return false;
         }
