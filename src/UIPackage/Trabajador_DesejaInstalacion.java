@@ -9,8 +9,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Producto;
 
 /**
- *
- * @author joaom
+ * @author João Piedade
  */
 public class Trabajador_DesejaInstalacion extends javax.swing.JFrame {
 

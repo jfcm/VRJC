@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * 
+ * @author João Piedade
  * This file contains the class Empresa
  */
 public class Empresa implements Serializable {

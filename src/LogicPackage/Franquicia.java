@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * 
+ * @author João Piedade
  * This file contains the class Franquicia
  */
 public class Franquicia implements Serializable {

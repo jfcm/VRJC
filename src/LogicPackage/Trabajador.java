@@ -4,6 +4,8 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author João Piedade
+ * @author Jovana Milivojevic
  * This file contains the class Trabajador
  */
 public class Trabajador extends Persona implements Serializable{

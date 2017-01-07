@@ -4,6 +4,8 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author Jorge Martins
+ * @author Jovana Milivojevic
  * This file contains the class RejaPreconfigurada
  */
 public class RejaPreconfigurada extends Producto implements Serializable{

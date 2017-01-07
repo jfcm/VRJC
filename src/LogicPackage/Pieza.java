@@ -4,6 +4,7 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author Jorge Martins
  *  This file contains the class Pieza
  */
 public class Pieza extends Producto implements Serializable{

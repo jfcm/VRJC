@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * @author Jorge Martins
  * This file contains the class Catalogo
  */
 public class Catalogo implements Serializable, Variables {

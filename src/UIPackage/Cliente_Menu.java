@@ -3,6 +3,10 @@ package UIPackage;
 
 import LogicPackage.Empresa;
 
+/**
+ * @author João Piedade
+ * @author Jovana Milivojevic
+ */
 public class Cliente_Menu extends javax.swing.JFrame {
 
     Empresa empresa;

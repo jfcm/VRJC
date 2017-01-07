@@ -4,6 +4,8 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author João Piedade
+ * @author Jovana Milivojevic
  * This file contains the class Persona
  */
 public abstract class Persona implements Serializable{

@@ -7,7 +7,7 @@ package LogicPackage;
 
 /**
  *
- * @author joaom
+ * @author Jorge Martins
  */
 public class CatalogoGeneralObject {
    

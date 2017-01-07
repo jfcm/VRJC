@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jorge Martins
+ */
 public class Gerente_RestaurarCopia extends javax.swing.JFrame {
 
     Empresa empresa;

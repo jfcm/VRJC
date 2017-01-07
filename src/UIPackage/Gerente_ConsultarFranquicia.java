@@ -4,13 +4,14 @@ package UIPackage;
 import LogicPackage.Dueno;
 import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
-import LogicPackage.Producto;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-
+/**
+ * @author Jorge Martins
+ */
 public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
 
     Empresa empresa;

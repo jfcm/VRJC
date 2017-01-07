@@ -14,6 +14,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jovana Milivojevic
+ */
 public class MainMenu extends javax.swing.JFrame {
 
     Empresa empresa;

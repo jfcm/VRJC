@@ -10,8 +10,7 @@ import LogicPackage.Producto;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author joaom
+ * @author João Piedade
  */
 public class Trabajador_MenuProdutosAMedida extends javax.swing.JFrame {
     

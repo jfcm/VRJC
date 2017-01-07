@@ -3,10 +3,12 @@ package UIPackage;
 
 import LogicPackage.Empresa;
 import LogicPackage.Producto;
-import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author João Piedade
+ */
 public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     Empresa empresa;

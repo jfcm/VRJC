@@ -4,6 +4,8 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author Jorge Martins
+ * @author Jovana Milivojevic
  * This file contains the class Producto
  */
 public class Producto implements Serializable {
@@ -87,10 +89,6 @@ public class Producto implements Serializable {
     
     public double calcularConPrecioInstalacao(){
         return (precioVenta);
-    }
-       
-    public double calcularBeneficio(){
-        return precioVenta - precioCompra;
     }
     
 }

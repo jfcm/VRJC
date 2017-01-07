@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author João Piedade
+ */
 public class Cliente_BuscarProducto extends javax.swing.JFrame {
     
     Empresa empresa;

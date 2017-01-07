@@ -4,6 +4,10 @@ package UIPackage;
 import LogicPackage.Empresa;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jovana Milivojevic
+ * @author Jorge Martins
+ */
 public class Gerente_LoginMenu extends javax.swing.JFrame {
 
     Empresa empresa;

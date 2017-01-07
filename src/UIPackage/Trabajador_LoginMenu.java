@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author joaom
+ * @author João Piedade
+ * @author Jovana Milivojevic
  */
 public class Trabajador_LoginMenu extends javax.swing.JFrame {
 

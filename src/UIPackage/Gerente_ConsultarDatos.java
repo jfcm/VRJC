@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jorge Martins
+ */
 public class Gerente_ConsultarDatos extends javax.swing.JFrame {
 
     ArrayList<Franquicia> franquicias;

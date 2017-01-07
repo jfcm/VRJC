@@ -4,6 +4,7 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author João Piedade
  * This file contains the class Gerente
  */
 public class Gerente extends Persona implements Serializable{

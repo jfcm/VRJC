@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jovana Milivojevic
+ * @author Jorge Martins
+ */
 public class Dueno_LoginMenu extends javax.swing.JFrame {
 
     Empresa empresa;

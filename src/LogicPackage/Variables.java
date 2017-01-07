@@ -2,6 +2,7 @@
 package LogicPackage;
 
 /**
+ * @author Jorge Martins
  * This file contains the interface Variables
  */
 public interface Variables {

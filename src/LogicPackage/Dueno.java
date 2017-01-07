@@ -4,6 +4,9 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * 
+ * @author Joao Piedade
+ * @author Jovana Milivojevic
  * This file contains the class Dueno
  */
 public class Dueno extends Persona implements Serializable {

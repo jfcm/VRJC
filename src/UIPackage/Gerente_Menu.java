@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jovana Milivojevic
+ * @author Jorge Martins
+ */
 public class Gerente_Menu extends javax.swing.JFrame {
     
     Empresa empresa;

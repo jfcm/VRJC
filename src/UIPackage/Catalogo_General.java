@@ -7,14 +7,12 @@ package UIPackage;
 
 import LogicPackage.CatalogoGeneralObject;
 import LogicPackage.Empresa;
-import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author joaom
+ * @author João Piedade
  */
 public class Catalogo_General extends javax.swing.JFrame {
 

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Jorge Martins
+ */
 public class Gerente_ModificarFranquicia extends javax.swing.JFrame {
 
     Empresa empresa;

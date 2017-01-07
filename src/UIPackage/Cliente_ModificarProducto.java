@@ -4,6 +4,10 @@ package UIPackage;
 import LogicPackage.*;
 import javax.swing.JOptionPane;
 
+/**
+ * @author João Piedade
+ * @author Jovana Milivojevic
+ */
 public class Cliente_ModificarProducto extends javax.swing.JFrame {
     
     Empresa empresa;

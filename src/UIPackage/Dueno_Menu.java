@@ -3,6 +3,10 @@ package UIPackage;
 
 import LogicPackage.Empresa;
 
+/**
+ * @author Jovana Milivojevic
+ * @author Jorge Martins
+ */
 public class Dueno_Menu extends javax.swing.JFrame {
 
     Empresa empresa;

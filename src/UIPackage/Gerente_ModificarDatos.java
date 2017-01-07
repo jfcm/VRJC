@@ -3,6 +3,9 @@ package UIPackage;
 
 import LogicPackage.Empresa;
 
+/**
+ * @author Jorge Martins
+ */
 public class Gerente_ModificarDatos extends javax.swing.JFrame {
 
     Empresa empresa;

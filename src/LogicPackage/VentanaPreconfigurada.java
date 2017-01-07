@@ -4,6 +4,8 @@ package LogicPackage;
 import java.io.Serializable;
 
 /**
+ * @author Jorge Martins
+ * @author Jovana Milivojevic
  * This file contains the class VentanaPreconfigurada
  */
 public class VentanaPreconfigurada extends Producto implements Serializable{
@@ -34,9 +36,7 @@ public class VentanaPreconfigurada extends Producto implements Serializable{
     
     @Override
     public double calcularConPrecioInstalacao(){
-        
-            return super.calcularConPrecioInstalacao() + precioInstalacion;
-        
+        return super.calcularConPrecioInstalacao() + precioInstalacion;    
     }
     
 }

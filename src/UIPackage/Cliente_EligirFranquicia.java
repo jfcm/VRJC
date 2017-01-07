@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * @author João Piedade
+ */
 public class Cliente_EligirFranquicia extends javax.swing.JFrame {
 
     ArrayList<Franquicia> franquicias;

@@ -11,8 +11,7 @@ import LogicPackage.Trabajador;
 import javax.swing.DefaultListModel;
 
 /**
- *
- * @author joaom
+ * @author João Piedade
  */
 public class Trabajador_F_Compras extends javax.swing.JFrame {
 
