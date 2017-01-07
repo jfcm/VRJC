@@ -2,6 +2,7 @@
 package UIPackage;
 
 import LogicPackage.*;
+import javax.swing.JOptionPane;
 
 public class Cliente_ModificarProducto extends javax.swing.JFrame {
     
@@ -23,23 +24,7 @@ public class Cliente_ModificarProducto extends javax.swing.JFrame {
         this.empresa = empresa;
         this.p = p;
         this.id = id;
-    }
-    
-    public boolean ModificaProducto()
-    {
-        String ancho_aux = TFancho.getText();
-        double ancho = Double.parseDouble(ancho_aux);
-        String alto_aux = TFalto.getText();
-        double alto = Double.parseDouble(alto_aux);
-        double nuevo_precio = p.calcularPrecioMedida();
-        
-        p.setAncho(ancho);
-        p.setAlto(alto);
-        p.setPrecioVenta(nuevo_precio);
-        p.setDescription(p.getNombre() + " con " + p.getAlto() + "x"+ p.getAncho());
-    
-        return true;
-    }
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,13 +129,48 @@ public class Cliente_ModificarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BVolverActionPerformed
-        Cliente_BuscarProducto s = new Cliente_BuscarProducto(empresa, id);
+        Cliente_ConsultarCatalogo s = new Cliente_ConsultarCatalogo(empresa, id);
         s.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BVolverActionPerformed
 
     private void BmodificarAltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmodificarAltoActionPerformed
-        ModificaProducto();
+        
+        String ancho_aux = TFancho.getText();
+        String alto_aux = TFalto.getText();
+        
+        if(ancho_aux.isEmpty() || alto_aux.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
+        
+        int ancho1, alto1;
+
+        try {
+            ancho1 = Integer.parseInt(TFancho.getText());
+            alto1 = Integer.parseInt(TFalto.getText());
+            if ((ancho1 <= 0 && ancho1 >= 400) || (alto1 <= 0 && alto1 >= 400)) {
+                JOptionPane.showMessageDialog(null, "Ancho y alto no es valido!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Ancho y alto no es valido!", "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        double ancho = Double.parseDouble(ancho_aux);
+        double alto = Double.parseDouble(alto_aux);
+        double nuevo_precio = p.calcularPrecioMedida();
+        
+        p.setAncho(ancho);
+        p.setAlto(alto);
+        p.setPrecioVenta(nuevo_precio);
+        p.setDescription(p.getNombre() + " con " + p.getAlto() + "x"+ p.getAncho());
+        
         Trabajador_LoginMenu s = new Trabajador_LoginMenu(empresa, id, p);
         s.setVisible(true);
         this.dispose();

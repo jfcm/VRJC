@@ -9,6 +9,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Producto;
 import LogicPackage.Trabajador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -142,7 +143,14 @@ public class Trabajador_LoginMenu extends javax.swing.JFrame {
     private void bLoginTrbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginTrbActionPerformed
         String nombre = tfNombreTrab.getText();
         String password = tfPassword.getText();
+        int aux = 0;
         
+        if (nombre.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Insertar lo nombre y password!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+              
         ArrayList<Trabajador> trabajadores = e.getFranquicias().get(id).getListTrabajadores();
         
         
@@ -152,16 +160,24 @@ public class Trabajador_LoginMenu extends javax.swing.JFrame {
             {
                 if(flag == 0){
                     Trabajador_MenuProdutosAMedida g = new Trabajador_MenuProdutosAMedida(e, id, p);
+                    aux = 1;
                     g.setVisible(true);
                     this.dispose();
                 }
                 else {
                     Trabajador_F_Compras g = new Trabajador_F_Compras(e, id);
+                    aux = 1;
                     g.setVisible(true);
                     this.dispose();
                 }
             }
         }
+        
+        if(aux == 0){
+            JOptionPane.showMessageDialog(null, "Nombre o password incorrecto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_bLoginTrbActionPerformed
 
     /**

@@ -295,10 +295,30 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             return;
         } 
         
+        int precio_v = 0, precio_c = 0, precio_i = 0, alto = 0, ancho = 0;
+
+        try {
+            precio_v = Integer.parseInt(tfPrecioVenta.getText());
+            precio_c = Integer.parseInt(tfPrecioCompra.getText());
+            precio_i = Integer.parseInt(tfPrecioInstlacion.getText());
+            alto = Integer.parseInt(tfAlto.getText());
+            ancho = Integer.parseInt(tfAncho.getText());
+            
+            if (precio_v <= 0 && precio_v >= 90000000 || precio_c <= 0 && precio_c >= 90000000 || precio_i <= 0 && precio_i >= 90000000 || alto <= 0 && alto >= 90000000 || ancho <= 0 && ancho >= 90000000) {
+                JOptionPane.showMessageDialog(null, "Numero invalido!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Numero invalido!", "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         double precioVenta = Double.parseDouble(precioVenta_aux);
         double precioCompra = Double.parseDouble(precioCompra_aux);
-        double alto = Double.parseDouble(alto_aux);
-        double ancho = Double.parseDouble(ancho_aux);
+        double alto1 = Double.parseDouble(alto_aux);
+        double ancho1 = Double.parseDouble(ancho_aux);
         double precioInstalacion = Double.parseDouble(precioInstalacion_aux);
         
         if(!rbPieza.isSelected() && !rbVentana.isSelected() && !rbReja.isSelected()){
@@ -307,10 +327,11 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             return;
         }
         
+        
         if(rbPieza.isSelected()){
             if(precioInstalacion_aux.isEmpty())
             {
-                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto1, ancho1);
                 productos.set(aux, p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1;
@@ -321,7 +342,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         if(rbVentana.isSelected()){
             if(!precioInstalacion_aux.isEmpty())
             {
-               Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+               Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto1, ancho1, precioInstalacion);
                 productos.set(aux, p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1; 
@@ -332,7 +353,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         if(rbReja.isSelected()){
             if(!precioInstalacion_aux.isEmpty())
             {
-                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto1, ancho1, precioInstalacion);
                 productos.set(aux, p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1;
@@ -370,16 +391,36 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             return;
         } 
         
+        int precio_v = 0, precio_c = 0, precio_i = 0, alto = 0, ancho = 0;
+
+        try {
+            precio_v = Integer.parseInt(tfPrecioVenta.getText());
+            precio_c = Integer.parseInt(tfPrecioCompra.getText());
+            precio_i = Integer.parseInt(tfPrecioInstlacion.getText());
+            alto = Integer.parseInt(tfAlto.getText());
+            ancho = Integer.parseInt(tfAncho.getText());
+            
+            if (precio_v <= 0 && precio_v >= 90000000 || precio_c <= 0 && precio_c >= 90000000 || precio_i <= 0 && precio_i >= 90000000 || alto <= 0 && alto >= 90000000 || ancho <= 0 && ancho >= 90000000) {
+                JOptionPane.showMessageDialog(null, "Numero invalido!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Numero invalido!", "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         double precioVenta = Double.parseDouble(precioVenta_aux);
         double precioCompra = Double.parseDouble(precioCompra_aux);
-        double alto = Double.parseDouble(alto_aux);
-        double ancho = Double.parseDouble(ancho_aux);
+        double alto1 = Double.parseDouble(alto_aux);
+        double ancho2 = Double.parseDouble(ancho_aux);
         double precioInstalacion;
         
         if(rbPieza.isSelected()){
             if(precioInstalacion_aux.isEmpty())
             {
-                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto1, ancho2);
                 productos.add(p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1;
@@ -395,7 +436,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             if(!precioInstalacion_aux.isEmpty())
             {
                 precioInstalacion = Double.parseDouble(precioInstalacion_aux);
-                Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto1, ancho2, precioInstalacion);
                 productos.add(p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1;
@@ -412,7 +453,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             if(!precioInstalacion_aux.isEmpty())
             {
                 precioInstalacion = Double.parseDouble(precioInstalacion_aux);
-                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto1, ancho2, precioInstalacion);
                 productos.add(p);
                 empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
                 flag = 1;

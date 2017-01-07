@@ -217,6 +217,8 @@ public class Catalogo_General extends javax.swing.JFrame {
                       "\n\nPrecio: " + catalogo.get(m).getProduto().getPrecioVenta() + 
                       "\n\nAlto: " + catalogo.get(m).getProduto().getAlto() + 
                       "\n\nAncho: " + catalogo.get(m).getProduto().getAncho());
+        
+        taVer.setEditable(false);
     }//GEN-LAST:event_bVerActionPerformed
 
     private void bOrdenarPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenarPrecioActionPerformed

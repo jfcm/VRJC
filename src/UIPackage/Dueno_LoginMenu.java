@@ -171,7 +171,7 @@ public class Dueno_LoginMenu extends javax.swing.JFrame {
         String nombre = tfNombre.getText();
         String password = tfPassword.getText();
         
-        if (nombre.isEmpty() && password.isEmpty()) {
+        if (nombre.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Insertar lo nombre y password!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
             return;

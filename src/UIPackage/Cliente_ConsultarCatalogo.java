@@ -5,6 +5,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
@@ -58,7 +59,6 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         bVolver = new javax.swing.JButton();
         Balterar = new javax.swing.JButton();
         BComprar = new javax.swing.JButton();
-        Bordenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,7 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(listProductos);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("Catálogo General");
+        jLabel1.setText("Catálogo");
 
         bVerProducto.setText("Ver");
         bVerProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -99,60 +99,49 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
             }
         });
 
-        Bordenar.setText("Ordenar");
-        Bordenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BordenarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(bVerProducto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Balterar)
-                                        .addGap(7, 7, 7)
-                                        .addComponent(BComprar))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addComponent(Bordenar))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(165, 165, 165)
-                            .addComponent(jLabel1))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bVerProducto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Balterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BComprar))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(86, 86, 86)
+                                .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel1)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bVolver))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bVerProducto)
-                            .addComponent(Balterar)
-                            .addComponent(BComprar))
-                        .addGap(5, 5, 5)
-                        .addComponent(Bordenar)))
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bVolver)
+                    .addComponent(bVerProducto)
+                    .addComponent(Balterar)
+                    .addComponent(BComprar))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -174,6 +163,12 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         
         int aux = listProductos.getSelectedIndex();
      
+        if(listProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String precioVenta = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getPrecioVenta());
         String alto = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getAlto());
         String ancho = String.valueOf(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(aux).getAncho());
@@ -183,6 +178,8 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
                                  "\n\nPrecio: " + precioVenta + 
                                  "\n\nAlto: " + alto +
                                  "\n\nAncho: " + ancho);
+        
+        taListarProducto.setEditable(false);
        
     }//GEN-LAST:event_bVerProductoActionPerformed
 
@@ -194,7 +191,21 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     private void BalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalterarActionPerformed
         int m = listProductos.getSelectedIndex();
-        //fazer validação na pieza!!!
+        
+        if(listProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Producto p = empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m);
+        
+        if(p.getNombre().equalsIgnoreCase("Pieza") || p.getNombre().equalsIgnoreCase("pieza")){
+            JOptionPane.showMessageDialog(null, "Lo producto elegido no puede ser cambiado!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+            
         Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m), id);
         d.setVisible(true);
         this.dispose();
@@ -203,6 +214,12 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     private void BComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarActionPerformed
         int m = listProductos.getSelectedIndex();
          
+        if(listProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m).getNombre().equalsIgnoreCase("Pieza")  && empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m).getNombre().equalsIgnoreCase("pieza") )
         {
             empresa.getFranquicias().get(id).getCompras().add(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
@@ -217,23 +234,6 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_BComprarActionPerformed
-
-    private void BordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BordenarActionPerformed
-
-        ArrayList<Producto> arraylist = empresa.getFranquicias().get(id).getCatalogo().getListaProductos();
-        Producto tmp;
-        
-        ArrayList<Producto> p1 = empresa.getFranquicias().get(id).getCatalogo().ordenaNumero(arraylist);
-        
-        model = new DefaultListModel<>();
-
-        for (Producto p : p1){
-            model.addElement(p.getDescription());
-        }
-
-        listProductos.setModel(model);
-        
-    }//GEN-LAST:event_BordenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,7 +274,6 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BComprar;
     private javax.swing.JButton Balterar;
-    private javax.swing.JButton Bordenar;
     private javax.swing.JButton bVerProducto;
     private javax.swing.JButton bVolver;
     private javax.swing.JLabel jLabel1;

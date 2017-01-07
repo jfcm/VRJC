@@ -257,7 +257,22 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         } 
+        
+        int Sueldo = 0;
 
+        try {
+            Sueldo = Integer.parseInt(tfSueldo.getText());
+            if (Sueldo <= 0 && Sueldo >= 90000000) {
+                JOptionPane.showMessageDialog(null, "Sueldo no es valido!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Sueldo no es valido!", "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         float sueldo = Float.parseFloat(sueldo_aux);     
         
         Trabajador t = new Trabajador(nombre, apelidos, usuario, password, sueldo);
@@ -288,6 +303,21 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         } 
+        
+        int Sueldo = 0;
+
+        try {
+            Sueldo = Integer.parseInt(tfSueldo.getText());
+            if (Sueldo <= 0 && Sueldo >= 90000000) {
+                JOptionPane.showMessageDialog(null, "Sueldo no es valido!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Sueldo no es valido!", "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         float sueldo = Float.parseFloat(sueldo_aux);        
                 

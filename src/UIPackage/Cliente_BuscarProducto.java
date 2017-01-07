@@ -5,6 +5,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Producto;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Cliente_BuscarProducto extends javax.swing.JFrame {
     
@@ -176,6 +177,13 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
 
     private void BNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BNombreProductoActionPerformed
         String nombre =  TFnombreProducto.getText();
+        
+        if(nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Lo nombre es invalido!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
+        
         pesquisarPorNombre(nombre);
     }//GEN-LAST:event_BNombreProductoActionPerformed
 
@@ -191,6 +199,12 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
 
     private void bComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bComprarActionPerformed
         int m = ListProductos.getSelectedIndex();
+
+        if(ListProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         if(p1.get(m).getNombre().equalsIgnoreCase("Pieza") && p1.get(m).getNombre().equalsIgnoreCase("pieza"))
         {
@@ -209,7 +223,21 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
 
     private void bModificarMedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarMedidasActionPerformed
         int m = ListProductos.getSelectedIndex();
-        //verificar pieza
+        
+        if(ListProductos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Producto p = empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m);
+        
+        if(p1.get(m).getNombre().equalsIgnoreCase("Pieza") || p1.get(m).getNombre().equalsIgnoreCase("pieza")){
+            JOptionPane.showMessageDialog(null, "Lo producto elegido no puede ser modificado!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, p1.get(m), id);
         d.setVisible(true);
         this.dispose();

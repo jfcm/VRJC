@@ -4,6 +4,7 @@ package UIPackage;
 import LogicPackage.Empresa;
 import LogicPackage.Producto;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 public class Cliente_Compras extends javax.swing.JFrame {
@@ -105,24 +106,25 @@ public class Cliente_Compras extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(Bborrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BComprarMas)
-                        .addGap(0, 2, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Bver)
+                        .addComponent(BComprarMas)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Bver, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BfinalizarCompras))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(BfinalizarCompras)
+                        .addGap(10, 10, 10)))
                 .addGap(21, 21, 21))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(202, 202, 202))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,13 +159,19 @@ public class Cliente_Compras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BComprarMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarMasActionPerformed
-        Cliente_BuscarProducto s = new Cliente_BuscarProducto(empresa, id);
+        Cliente_ConsultarCatalogo s = new Cliente_ConsultarCatalogo(empresa, id);
         s.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BComprarMasActionPerformed
 
     private void BborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BborrarActionPerformed
         int m = Lprodutos.getSelectedIndex();
+        
+        if(Lprodutos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         
         empresa.getFranquicias().get(id).getCompras().remove(m);
         
@@ -181,6 +189,12 @@ public class Cliente_Compras extends javax.swing.JFrame {
     private void BverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BverActionPerformed
         int m = Lprodutos.getSelectedIndex();
         
+        if(Lprodutos.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un producto!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String precioVenta = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getPrecioVenta());
         String alto = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getAlto());
         String ancho = String.valueOf(empresa.getFranquicias().get(id).getCompras().get(m).getAncho());
@@ -190,10 +204,11 @@ public class Cliente_Compras extends javax.swing.JFrame {
                                  "\n\nPrecio: " + precioVenta + 
                                  "\n\nAlto: " + alto +
                                  "\n\nAncho: " + ancho);
+        
+        TAprodutos.setEditable(false);
     }//GEN-LAST:event_BverActionPerformed
 
     private void BfinalizarComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfinalizarComprasActionPerformed
-        //Trabajador_F_Compras c = new Trabajador_F_Compras(empresa, id);
         Trabajador_LoginMenu l = new Trabajador_LoginMenu(empresa, id, 1);
         l.setVisible(true);
         this.dispose();
