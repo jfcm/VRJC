@@ -13,7 +13,7 @@ public class Franquicia implements Serializable {
     private String Direccion;
     private String horaApertura;
     private String horaCierre;
-    private int n_total_p_vendidos;
+    private int numeroProductosVendidos;
     private double ventas_totales;
     private Dueno dueno;
     private double beneficio;
@@ -24,46 +24,37 @@ public class Franquicia implements Serializable {
     public Franquicia(){
         lista_trabajadores = new ArrayList<>();
         compras = new ArrayList<>();
-        n_total_p_vendidos = 0;
+        numeroProductosVendidos = 0;
         ventas_totales = 0;
         cat = new Catalogo();
     }
     
-    public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, double ventas_totales){
+    public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int numeroProductosVendidos, double ventas_totales){
         this.dueno = dueno;
         this.lista_trabajadores = l;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.horaApertura = horaApertura; 
         this.horaCierre = horaCierre; 
-        this.n_total_p_vendidos = n_total_p_vendidos;
+        this.numeroProductosVendidos = numeroProductosVendidos;
         this.ventas_totales = ventas_totales;
         compras = new ArrayList<>();
         cat = new Catalogo();
     }
     
-    private void generarTrabajadores() {
-        Trabajador t1 = new Trabajador("Jorge", "Martins", "jorge", "123", 500);
-        lista_trabajadores.add(t1);
-        Trabajador t2 = new Trabajador("João", "Piedade", "joao", "123", 600);
-        lista_trabajadores.add(t2);
-        Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123", 450);
-        lista_trabajadores.add(t3);
-    }
-    
     public int getNumTotalPvendidos()
     {
-        return n_total_p_vendidos;
+        return numeroProductosVendidos;
     }
     
-    public void setNumTotalPvendidos(int n_total_p_vendidos)
+    public void setNumTotalPvendidos(int numeroProductosVendidos)
     {
-        this.n_total_p_vendidos = n_total_p_vendidos;
+        this.numeroProductosVendidos = numeroProductosVendidos;
     }
     
     public double getBeneficio()
     {
-        return n_total_p_vendidos;
+        return beneficio;
     }
     
     public void setBeneficio(double beneficio)
@@ -161,11 +152,6 @@ public class Franquicia implements Serializable {
     {
         this.lista_trabajadores = lista_trabajadores;
     }
-    
-    public String getNombreFranquicia()
-    {
-        return Nombre;
-    } 
     
     public boolean modificarTrabajador(String usuario, String nombre, String password, String apelidos)
     {

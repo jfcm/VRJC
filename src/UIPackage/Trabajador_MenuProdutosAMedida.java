@@ -137,7 +137,7 @@ public class Trabajador_MenuProdutosAMedida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bValidarActionPerformed
-        float precio_nuevo = (float) (p.getPrecioVenta() + p.getPrecioVenta()*0.1);
+        double precio_nuevo = p.calcularPrecioMedida();
         p.setPrecioVenta(precio_nuevo);
         
         Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(e, id, p);

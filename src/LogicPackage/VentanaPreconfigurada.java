@@ -10,10 +10,10 @@ public class VentanaPreconfigurada extends Producto implements Serializable{
     
     private double precioInstalacion;
     private int numeroHojas;
-    private boolean instalada;
     
-    public VentanaPreconfigurada(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho){
+    public VentanaPreconfigurada(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho, double precioInstalacion){
         super(nombre, description, precioVenta, precioCompra, alto, ancho);
+        this.precioInstalacion = precioInstalacion;
     }
     
     public double getPrecioInstalacion(){
@@ -32,22 +32,11 @@ public class VentanaPreconfigurada extends Producto implements Serializable{
         this.numeroHojas = numeroHojas;
     }
     
-    public boolean getInstalada(){
-        return instalada;
-    }
-    
-    public void setInstalada(boolean instalada){
-        this.instalada = instalada;
-    }
-    
     @Override
-    public double calcularPrecio(){
-        if(instalada == true){
-            return super.calcularPrecio() + precioInstalacion;
-        }
-        else{
-            return super.calcularPrecio();
-        }
+    public double calcularConPrecioInstalacao(){
+        
+            return super.calcularConPrecioInstalacao() + precioInstalacion;
+        
     }
     
 }

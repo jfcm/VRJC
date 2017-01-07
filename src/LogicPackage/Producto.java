@@ -81,8 +81,12 @@ public class Producto implements Serializable {
         this.ancho = ancho;
     }
     
-    public double calcularPrecio(){
+    public double calcularPrecioMedida(){
         return (precioVenta + (precioVenta * 0.1));
+    }
+    
+    public double calcularConPrecioInstalacao(){
+        return (precioVenta);
     }
        
     public double calcularBeneficio(){

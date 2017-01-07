@@ -75,18 +75,22 @@
                                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfAncho" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <Component id="tfNombre" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <Component id="tfDescription" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <Component id="tfPrecioVenta" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <Component id="tfPrecioCompra" min="-2" pref="167" max="-2" attributes="0"/>
-                                      <Component id="tfAlto" min="-2" pref="167" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="tfAncho" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfNombre" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfDescription" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfPrecioVenta" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfPrecioCompra" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfAlto" pref="167" max="32767" attributes="0"/>
+                                      <Component id="tfPrecioInstlacion" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -110,7 +114,7 @@
                           <Component id="bVolver" min="-2" pref="76" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,6 +154,11 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfAncho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfPrecioInstlacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -294,6 +303,13 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pieza"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Precio Instalacion:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tfPrecioInstlacion">
         </Component>
       </SubComponents>
     </Container>

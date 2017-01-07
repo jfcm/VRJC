@@ -31,7 +31,7 @@ public class Cliente_ModificarProducto extends javax.swing.JFrame {
         double ancho = Double.parseDouble(ancho_aux);
         String alto_aux = TFalto.getText();
         double alto = Double.parseDouble(alto_aux);
-        double nuevo_precio = p.calcularPrecio();
+        double nuevo_precio = p.calcularPrecioMedida();
         
         p.setAncho(ancho);
         p.setAlto(alto);

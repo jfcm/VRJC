@@ -38,7 +38,24 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
     }
     
     private void llennarTextAreaFranquicia(){
+      
+        Franquicia f = empresa.getFranquicias().get(id);
         
+        int productos_disponibles_aux = f.getCatalogo().getListaProductos().size();
+        int productos_vendidos_aux = f.getNumTotalPvendidos();
+        double ventas_totales_aux = f.getTotal_ventas();
+        String productos_disponibles = String.valueOf(productos_disponibles_aux);
+        String productos_vendidos = String.valueOf(productos_vendidos_aux);
+        String ventas_totales = Double.toString(ventas_totales_aux);
+            
+           
+        taInfoFranq.setText("\n\nFranquicia:\n " + f.getNombre() + 
+                            "\n\nProductos Disponibles:\n " +  productos_disponibles+ 
+                            "\n\nProductos Vendidos:\n " + productos_vendidos + 
+                            "\n\nVentas Totales:\n " + ventas_totales);
+    
+        taInfoFranq.setEditable(false); 
+
     }
 
     /**
@@ -56,12 +73,12 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
         rbTrabajador = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listDatos = new javax.swing.JList<>();
-        bConsultarDatos = new javax.swing.JButton();
-        bVolver = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         taDatos = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         taInfoFranq = new javax.swing.JTextArea();
+        bConsultarDatos = new javax.swing.JButton();
+        bVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +100,14 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(listDatos);
 
+        taDatos.setColumns(20);
+        taDatos.setRows(5);
+        jScrollPane2.setViewportView(taDatos);
+
+        taInfoFranq.setColumns(20);
+        taInfoFranq.setRows(5);
+        jScrollPane3.setViewportView(taInfoFranq);
+
         bConsultarDatos.setText("Consultar Datos");
         bConsultarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,69 +122,66 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
             }
         });
 
-        taDatos.setColumns(20);
-        taDatos.setRows(5);
-        jScrollPane2.setViewportView(taDatos);
-
-        taInfoFranq.setColumns(20);
-        taInfoFranq.setRows(5);
-        jScrollPane3.setViewportView(taInfoFranq);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(bConsultarDatos))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbTrabajador)
                     .addComponent(rbDueno))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bConsultarDatos)
+                .addGap(111, 111, 111)
+                .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(54, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(rbDueno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rbTrabajador)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bConsultarDatos)
-                            .addComponent(bVolver))))
-                .addGap(28, 28, 28))
+                                .addComponent(jScrollPane1)
+                                .addGap(5, 5, 5)))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bVolver)
+                    .addComponent(bConsultarDatos))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,6 +244,8 @@ public class Gerente_ConsultarFranquicia extends javax.swing.JFrame {
                             "\n\nPassword: " + trabajadores.get(aux).getPassword() +
                             "\n\nSueldo: " + Sueldo);
         }
+        
+        taDatos.setEditable(false);
         
     }//GEN-LAST:event_bConsultarDatosActionPerformed
 

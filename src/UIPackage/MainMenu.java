@@ -182,7 +182,7 @@ public class MainMenu extends javax.swing.JFrame {
             
             for(Producto p : empresa.getFranquicias().get(i).getCatalogo().getListaProductos())
             {
-                CatalogoGeneralObject e = new CatalogoGeneralObject( empresa.getFranquicias().get(i).getNombreFranquicia(), p);
+                CatalogoGeneralObject e = new CatalogoGeneralObject( empresa.getFranquicias().get(i).getNombre(), p);
                 a.add(e);
             }
         }

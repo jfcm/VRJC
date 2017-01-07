@@ -77,6 +77,8 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         rbReja = new javax.swing.JRadioButton();
         rbVentana = new javax.swing.JRadioButton();
         rbPieza = new javax.swing.JRadioButton();
+        jLabel8 = new javax.swing.JLabel();
+        tfPrecioInstlacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +136,8 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         group.add(rbPieza);
         rbPieza.setText("Pieza");
 
+        jLabel8.setText("Precio Instalacion:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,15 +169,18 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
                                             .addComponent(jLabel6)
                                             .addGap(58, 58, 58)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8))
                                         .addGap(88, 88, 88)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfAncho, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPrecioVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfPrecioCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfAncho, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfPrecioVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfPrecioCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfAlto, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                    .addComponent(tfPrecioInstlacion)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addComponent(rbReja)
@@ -190,7 +197,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
                         .addComponent(bModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,6 +230,10 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(tfAncho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(tfPrecioInstlacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rbReja)
@@ -276,6 +287,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         String precioCompra_aux = tfPrecioCompra.getText();
         String alto_aux = tfAlto.getText();
         String ancho_aux = tfAncho.getText();
+        String precioInstalacion_aux = tfPrecioInstlacion.getText();
                 
         if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
@@ -287,6 +299,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         double precioCompra = Double.parseDouble(precioCompra_aux);
         double alto = Double.parseDouble(alto_aux);
         double ancho = Double.parseDouble(ancho_aux);
+        double precioInstalacion = Double.parseDouble(precioInstalacion_aux);
         
         if(!rbPieza.isSelected() && !rbVentana.isSelected() && !rbReja.isSelected()){
             JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
@@ -295,24 +308,35 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         }
         
         if(rbPieza.isSelected()){
-            Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.set(aux, p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(precioInstalacion_aux.isEmpty())
+            {
+                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+                productos.set(aux, p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1;
+            }
+            
         }
         
         if(rbVentana.isSelected()){
-            Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.set(aux, p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(!precioInstalacion_aux.isEmpty())
+            {
+               Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                productos.set(aux, p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1; 
+            }
+            
         }
         
         if(rbReja.isSelected()){
-            Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.set(aux, p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(!precioInstalacion_aux.isEmpty())
+            {
+                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                productos.set(aux, p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1;
+            }
         }
         
         if(flag == 1){
@@ -322,6 +346,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
             tfPrecioCompra.setText(null);
             tfAlto.setText(null);
             tfAncho.setText(null);
+            tfPrecioInstlacion.setText(null);
             llenarListaProductos();
         }
         
@@ -329,7 +354,6 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
 
     private void bDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarAltaActionPerformed
         
-        int aux = listaProductos.getSelectedIndex();
         int flag = 0;
         
         String nombre = tfNombre.getText();
@@ -338,6 +362,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         String precioCompra_aux = tfPrecioCompra.getText();
         String alto_aux = tfAlto.getText();
         String ancho_aux = tfAncho.getText();
+        String precioInstalacion_aux = tfPrecioInstlacion.getText();
                 
         if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
@@ -349,12 +374,16 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         double precioCompra = Double.parseDouble(precioCompra_aux);
         double alto = Double.parseDouble(alto_aux);
         double ancho = Double.parseDouble(ancho_aux);
+        double precioInstalacion;
         
         if(rbPieza.isSelected()){
-            Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.add(p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(precioInstalacion_aux.isEmpty())
+            {
+                Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);
+                productos.add(p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1;
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
@@ -363,10 +392,15 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         }
         
         if(rbVentana.isSelected()){
-            Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.add(p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(!precioInstalacion_aux.isEmpty())
+            {
+                precioInstalacion = Double.parseDouble(precioInstalacion_aux);
+                Producto p = new VentanaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                productos.add(p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1;
+            }
+            
         }
         else{
             JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
@@ -375,10 +409,14 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         }
         
         if(rbReja.isSelected()){
-            Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho);
-            productos.add(p);
-            empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
-            flag = 1;
+            if(!precioInstalacion_aux.isEmpty())
+            {
+                precioInstalacion = Double.parseDouble(precioInstalacion_aux);
+                Producto p = new RejaPreconfigurada(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacion);
+                productos.add(p);
+                empresa.getFranquicias().get(id).getCatalogo().setListaProductos(productos);
+                flag = 1;
+            }
         }
         else{
             JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
@@ -463,6 +501,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listaProductos;
@@ -474,6 +513,7 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
     private javax.swing.JTextField tfDescription;
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfPrecioCompra;
+    private javax.swing.JTextField tfPrecioInstlacion;
     private javax.swing.JTextField tfPrecioVenta;
     // End of variables declaration//GEN-END:variables
 }

@@ -192,16 +192,24 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
     private void bComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bComprarActionPerformed
         int m = ListProductos.getSelectedIndex();
         
-        //empresa.getFranquicias().get(id).getCompras().add(p1.get(m));
+        if(p1.get(m).getNombre().equalsIgnoreCase("Pieza") && p1.get(m).getNombre().equalsIgnoreCase("pieza"))
+        {
+            empresa.getFranquicias().get(id).getCompras().add(p1.get(m));
+            Cliente_Compras g = new Cliente_Compras(empresa, id);
+            g.setVisible(true);
+            this.dispose();
+        }else
+        {
+            Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, p1.get(m));
+            c.setVisible(true);
+            this.dispose();
+        }
         
-        Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, p1.get(m));
-        c.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_bComprarActionPerformed
 
     private void bModificarMedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarMedidasActionPerformed
         int m = ListProductos.getSelectedIndex();
-        
+        //verificar pieza
         Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, p1.get(m), id);
         d.setVisible(true);
         this.dispose();

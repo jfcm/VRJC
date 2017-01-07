@@ -193,8 +193,8 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     }//GEN-LAST:event_bVolverActionPerformed
 
     private void BalterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BalterarActionPerformed
-         int m = listProductos.getSelectedIndex();
-        
+        int m = listProductos.getSelectedIndex();
+        //fazer validação na pieza!!!
         Cliente_ModificarProducto d = new Cliente_ModificarProducto(empresa, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m), id);
         d.setVisible(true);
         this.dispose();
@@ -203,9 +203,19 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
     private void BComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarActionPerformed
         int m = listProductos.getSelectedIndex();
          
-        Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
-        c.setVisible(true);
-        this.dispose();
+        if(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m).getNombre().equalsIgnoreCase("Pieza")  && empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m).getNombre().equalsIgnoreCase("pieza") )
+        {
+            empresa.getFranquicias().get(id).getCompras().add(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
+            Cliente_Compras g = new Cliente_Compras(empresa, id);
+            g.setVisible(true);
+            this.dispose();
+        }else
+        {
+            Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
+            c.setVisible(true);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_BComprarActionPerformed
 
     private void BordenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BordenarActionPerformed

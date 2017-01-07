@@ -8,8 +8,8 @@ import java.io.Serializable;
  */
 public class RejaaMedida extends RejaPreconfigurada implements Serializable{
 
-    public RejaaMedida(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho) {
-        super(nombre, description, precioVenta, precioCompra, alto, ancho);
+    public RejaaMedida(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho, double precioInstalacao) {
+        super(nombre, description, precioVenta, precioCompra, alto, ancho, precioInstalacao);
     }
 
     public void cambiarAncho(double Ancho){

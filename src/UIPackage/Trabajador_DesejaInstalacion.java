@@ -118,7 +118,7 @@ public class Trabajador_DesejaInstalacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSIActionPerformed
-        double precio_venta = p.calcularPrecio();
+        double precio_venta = p.calcularConPrecioInstalacao();
         p.setPrecioVenta(precio_venta);
         e.getFranquicias().get(id).getCompras().add(p);
         

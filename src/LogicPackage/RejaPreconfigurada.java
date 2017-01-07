@@ -10,13 +10,10 @@ public class RejaPreconfigurada extends Producto implements Serializable{
 
     private double precioInstalacion;
     private int numeroBarrotes;
-    private boolean instalada;
     
-    public RejaPreconfigurada(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho){
+    public RejaPreconfigurada(String nombre, String description, double precioVenta, double precioCompra, double alto, double ancho, double precioInstalacion){
         super(nombre, description, precioVenta, precioCompra, alto, ancho);
-        precioInstalacion = 0;
-        instalada = false;
-        numeroBarrotes = 0;
+        this.precioInstalacion = precioInstalacion;
     }
     
     public double getPrecioInstalacion(){
@@ -35,22 +32,12 @@ public class RejaPreconfigurada extends Producto implements Serializable{
         this.numeroBarrotes = numeroBarrotes;
     }
     
-    public boolean getInstalada(){
-        return instalada;
-    }
     
-    public void setInstalada(boolean instalada){
-        this.instalada = instalada;
-    }
-    
-    @Override
-    public double calcularPrecio(){
-        if(instalada == true){
-            return super.calcularPrecio() + precioInstalacion;
-        }
-        else{
-            return super.calcularPrecio();
-        }
+     @Override
+    public double calcularConPrecioInstalacao(){
+        
+            return super.calcularConPrecioInstalacao() + precioInstalacion;
+        
     }
     
 }
