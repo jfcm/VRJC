@@ -31,13 +31,11 @@ public class Cliente_ModificarProducto extends javax.swing.JFrame {
         double ancho = Double.parseDouble(ancho_aux);
         String alto_aux = TFalto.getText();
         double alto = Double.parseDouble(alto_aux);
-        double preco_aux = p.getPrecioVenta();
-        
-        preco_aux = preco_aux + preco_aux * 0.1;
+        double nuevo_precio = p.calcularPrecio();
         
         p.setAncho(ancho);
         p.setAlto(alto);
-        p.setPrecioVenta(preco_aux);
+        p.setPrecioVenta(nuevo_precio);
         p.setDescription(p.getNombre() + " con " + p.getAlto() + "x"+ p.getAncho());
     
         return true;

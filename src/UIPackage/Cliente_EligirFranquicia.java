@@ -9,6 +9,7 @@ import LogicPackage.Empresa;
 import LogicPackage.Franquicia;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class Cliente_EligirFranquicia extends javax.swing.JFrame {
 
@@ -133,6 +134,13 @@ public class Cliente_EligirFranquicia extends javax.swing.JFrame {
 
     private void bElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bElegirActionPerformed
         id = listFranquicias.getSelectedIndex();
+        
+        if(listFranquicias.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir una Franquicia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         Cliente_Menu g = new Cliente_Menu(empresa, id);
         g.setVisible(true);
         this.dispose();

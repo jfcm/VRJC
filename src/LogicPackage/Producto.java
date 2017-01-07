@@ -82,14 +82,9 @@ public class Producto implements Serializable {
     }
     
     public double calcularPrecio(){
-        if(alto >= 30 && alto <= 300 && ancho >= 30 && ancho <= 300){
-            if(alto % 5 == 0 && ancho % 5 == 0){
-                return precioVenta;
-            }
-        }
-        return 0;
+        return (precioVenta + (precioVenta * 0.1));
     }
-    
+       
     public double calcularBeneficio(){
         return precioVenta - precioCompra;
     }

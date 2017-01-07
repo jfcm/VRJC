@@ -251,7 +251,6 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
         String sueldo_aux = tfSueldo.getText();
-        float sueldo = Float.parseFloat(sueldo_aux);
         
         if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
@@ -259,6 +258,8 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
             return;
         } 
 
+        float sueldo = Float.parseFloat(sueldo_aux);     
+        
         Trabajador t = new Trabajador(nombre, apelidos, usuario, password, sueldo);
         trabajadores.set(aux, t);
         
@@ -275,12 +276,12 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
     }//GEN-LAST:event_bModificarActionPerformed
 
     private void bDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarAltaActionPerformed
+        
         String nombre = tfNombre.getText();
         String apelidos = tfApelidos.getText();
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
         String sueldo_aux = tfSueldo.getText();
-        float sueldo = Float.parseFloat(sueldo_aux);
         
         if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
@@ -288,6 +289,8 @@ public class Gerente_ModificarTrabajador extends javax.swing.JFrame {
             return;
         } 
         
+        float sueldo = Float.parseFloat(sueldo_aux);        
+                
         Trabajador t = new Trabajador(nombre, apelidos, usuario, password, sueldo);
         boolean aux = empresa.getFranquicias().get(id).darAltaTrabajador(t);
        

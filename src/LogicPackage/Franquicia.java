@@ -14,8 +14,9 @@ public class Franquicia implements Serializable {
     private String horaApertura;
     private String horaCierre;
     private int n_total_p_vendidos;
-    private float ventas_totales;
+    private double ventas_totales;
     private Dueno dueno;
+    private double beneficio;
     private ArrayList<Trabajador> lista_trabajadores;
     private ArrayList<Producto> compras;
     private Catalogo cat;
@@ -28,7 +29,7 @@ public class Franquicia implements Serializable {
         cat = new Catalogo();
     }
     
-    public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, float ventas_totales){
+    public Franquicia(Dueno dueno, ArrayList<Trabajador> l, String Nombre, String Direccion, String horaApertura, String horaCierre, int n_total_p_vendidos, double ventas_totales){
         this.dueno = dueno;
         this.lista_trabajadores = l;
         this.Nombre = Nombre;
@@ -49,15 +50,37 @@ public class Franquicia implements Serializable {
         Trabajador t3 = new Trabajador("Jovana", "Milozhevic", "jovana", "123", 450);
         lista_trabajadores.add(t3);
     }
-     
-    public int getTotalProdutosVendidos()
+    
+    public int getNumTotalPvendidos()
     {
         return n_total_p_vendidos;
     }
     
-    public float getTotal_ventas()
+    public void setNumTotalPvendidos(int n_total_p_vendidos)
+    {
+        this.n_total_p_vendidos = n_total_p_vendidos;
+    }
+    
+    public double getBeneficio()
+    {
+        return n_total_p_vendidos;
+    }
+    
+    public void setBeneficio(double beneficio)
+    {
+        this.beneficio = beneficio;
+    }
+   
+    
+    public double getTotal_ventas()
     {
         return ventas_totales;
+    }
+    
+     
+    public void setTotal_ventas(double ventas_totales)
+    {
+        this.ventas_totales = ventas_totales;
     }
     
     public String getNombre(){
@@ -203,5 +226,5 @@ public class Franquicia implements Serializable {
         
         return true;
     }
-    
+  
 }

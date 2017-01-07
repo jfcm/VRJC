@@ -202,10 +202,8 @@ public class Cliente_ConsultarCatalogo extends javax.swing.JFrame {
 
     private void BComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BComprarActionPerformed
         int m = listProductos.getSelectedIndex();
-        
-        empresa.getFranquicias().get(id).getCompras().add(empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
-        
-        Cliente_Compras c = new Cliente_Compras(empresa, id);
+         
+        Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, empresa.getFranquicias().get(id).getCatalogo().getListaProductos().get(m));
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BComprarActionPerformed

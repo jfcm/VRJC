@@ -12,21 +12,21 @@ import LogicPackage.Producto;
  *
  * @author joaom
  */
-public class Trabajadaor_DesejaInstalacion extends javax.swing.JFrame {
+public class Trabajador_DesejaInstalacion extends javax.swing.JFrame {
 
     /**
-     * Creates new form Trabajadaor_DesejaInstalacion
+     * Creates new form Trabajador_DesejaInstalacion
      */
     Empresa e;
     Producto p;
     int id;
     
-    public Trabajadaor_DesejaInstalacion() {
+    public Trabajador_DesejaInstalacion() {
         setTitle("Ventanas y Rejas José Cándido - Trabajador");
         initComponents();
     }
     
-    public Trabajadaor_DesejaInstalacion(Empresa e, int id, Producto p){
+    public Trabajador_DesejaInstalacion(Empresa e, int id, Producto p){
         setTitle("Ventanas y Rejas José Cándido - Trabajador");
         initComponents();
         this.e = e;
@@ -54,7 +54,7 @@ public class Trabajadaor_DesejaInstalacion extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Cliente");
 
-        jLabel2.setText("Nesecita de instalacion:");
+        jLabel2.setText("Necessita de instalacion:");
 
         bSI.setText("Si");
         bSI.addActionListener(new java.awt.event.ActionListener() {
@@ -77,23 +77,24 @@ public class Trabajadaor_DesejaInstalacion extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bSI)
-                            .addComponent(jLabel2))
-                        .addGap(17, 17, 17)
-                        .addComponent(bNO))
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bSI, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bNO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
+                        .addGap(111, 111, 111)
                         .addComponent(jLabel1)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -117,7 +118,8 @@ public class Trabajadaor_DesejaInstalacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSIActionPerformed
-        p.setPrecioVenta(p.getPrecioVenta() + (p.getPrecioVenta()*0.1));
+        double precio_venta = p.calcularPrecio();
+        p.setPrecioVenta(precio_venta);
         e.getFranquicias().get(id).getCompras().add(p);
         
         Cliente_Compras g = new Cliente_Compras(e, id);
@@ -149,20 +151,21 @@ public class Trabajadaor_DesejaInstalacion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Trabajadaor_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Trabajadaor_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Trabajadaor_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Trabajadaor_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Trabajador_DesejaInstalacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Trabajadaor_DesejaInstalacion().setVisible(true);
+                new Trabajador_DesejaInstalacion().setVisible(true);
             }
         });
     }

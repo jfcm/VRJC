@@ -276,16 +276,17 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         String precioCompra_aux = tfPrecioCompra.getText();
         String alto_aux = tfAlto.getText();
         String ancho_aux = tfAncho.getText();
-        double precioVenta = Double.parseDouble(precioVenta_aux);
-        double precioCompra = Double.parseDouble(precioCompra_aux);
-        double alto = Double.parseDouble(alto_aux);
-        double ancho = Double.parseDouble(ancho_aux);
-        
+                
         if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
             return;
         } 
+        
+        double precioVenta = Double.parseDouble(precioVenta_aux);
+        double precioCompra = Double.parseDouble(precioCompra_aux);
+        double alto = Double.parseDouble(alto_aux);
+        double ancho = Double.parseDouble(ancho_aux);
         
         if(!rbPieza.isSelected() && !rbVentana.isSelected() && !rbReja.isSelected()){
             JOptionPane.showMessageDialog(null, "Tiene que elegir un tipo de producto!", "Warning",
@@ -337,16 +338,17 @@ public class Dueno_GestionarProductos extends javax.swing.JFrame {
         String precioCompra_aux = tfPrecioCompra.getText();
         String alto_aux = tfAlto.getText();
         String ancho_aux = tfAncho.getText();
-        double precioVenta = Double.parseDouble(precioVenta_aux);
-        double precioCompra = Double.parseDouble(precioCompra_aux);
-        double alto = Double.parseDouble(alto_aux);
-        double ancho = Double.parseDouble(ancho_aux);
-        
+                
         if(nombre.isEmpty() || description.isEmpty() || precioVenta_aux.isEmpty() || precioCompra_aux.isEmpty() || alto_aux.isEmpty() || ancho_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
             return;
         } 
+        
+        double precioVenta = Double.parseDouble(precioVenta_aux);
+        double precioCompra = Double.parseDouble(precioCompra_aux);
+        double alto = Double.parseDouble(alto_aux);
+        double ancho = Double.parseDouble(ancho_aux);
         
         if(rbPieza.isSelected()){
             Producto p = new Pieza(nombre, description, precioVenta, precioCompra, alto, ancho);

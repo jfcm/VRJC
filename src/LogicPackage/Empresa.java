@@ -218,22 +218,5 @@ public class Empresa implements Serializable {
         return 1;
         
     }   
-    
-    public void ordenaFranquicia(ArrayList<Franquicia> f)
-    {
-        this.franquicias = f;
-        
-        int tamanho = franquicias.size();
-        
-        for (int i = 0; i < tamanho - 1; i++) {
-            for (int j = 0; j < tamanho - 1 - i; j++) {
-                if(franquicias.get(i).getNombre().compareTo(franquicias.get(j+1).getNombre())>0) { 
-                    Franquicia g = franquicias.get(j);
-                    franquicias.set(j, franquicias.get(j+1));
-                    franquicias.set(j+1, g);
-                }
-            }
-        }
-    }
 
 }

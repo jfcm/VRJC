@@ -130,6 +130,12 @@ public class Gerente_RestaurarCopia extends javax.swing.JFrame {
     }//GEN-LAST:event_bVolverActionPerformed
 
     private void bRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRestaurarActionPerformed
+
+        if(listFiles.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Tiene que elegir un fichero!", "Warning",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }  
         
         boolean aux = restaurarCopia();
         if(aux == false){

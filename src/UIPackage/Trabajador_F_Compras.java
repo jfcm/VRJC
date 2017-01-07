@@ -7,6 +7,7 @@ package UIPackage;
 
 import LogicPackage.Empresa;
 import LogicPackage.Producto;
+import LogicPackage.Trabajador;
 import javax.swing.DefaultListModel;
 
 /**
@@ -42,7 +43,43 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
         }
         ListCompras.setModel(model);
     }
-
+    
+    public void DarBaja()
+    {
+        double preco_total_ventas = 0, preco_total_compras = 0, beneficio, saldo_total = 0;
+        
+        for(Producto p1 : e.getFranquicias().get(id).getCompras())
+        {
+            preco_total_ventas = preco_total_ventas + p1.getPrecioVenta();
+            preco_total_compras = preco_total_compras + p1.getPrecioCompra();
+        }
+        
+        e.getFranquicias().get(id).setTotal_ventas(e.getFranquicias().get(id).getTotal_ventas() + preco_total_ventas);
+        
+        e.getFranquicias().get(id).setNumTotalPvendidos(e.getFranquicias().get(id).getNumTotalPvendidos() + e.getFranquicias().get(id).getCompras().size());
+        
+        for(Trabajador t : e.getFranquicias().get(id).getListTrabajadores())
+        {
+            saldo_total = saldo_total + t.getSueldo();
+        }
+        
+        beneficio = preco_total_ventas - preco_total_compras - saldo_total;
+        
+        e.getFranquicias().get(id).setBeneficio(e.getFranquicias().get(id).getBeneficio() + beneficio);
+        
+        for(int i = 0; i < e.getFranquicias().get(id).getCompras().size(); i++)
+        {
+            for(int j = 0; j < e.getFranquicias().get(id).getCatalogo().getListaProductos().size(); j++)
+            {
+                if(e.getFranquicias().get(id).getCompras().get(i).equals(e.getFranquicias().get(id).getCatalogo().getListaProductos().get(j)))
+                {
+                    e.getFranquicias().get(id).getCatalogo().getListaProductos().remove(j);
+                    break;
+                }
+            }
+            e.getFranquicias().get(id).getCompras().remove(i);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,18 +114,17 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(bDarBaja)))))
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bDarBaja)
+                .addGap(122, 122, 122))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(153, 153, 153))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +153,10 @@ public class Trabajador_F_Compras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDarBajaActionPerformed
-        // TODO add your handling code here:
+        DarBaja();
+        MainMenu m = new MainMenu(e);
+        m.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bDarBajaActionPerformed
 
     /**

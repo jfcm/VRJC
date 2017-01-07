@@ -208,13 +208,14 @@ public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
         String usuario = tfUsuario.getText();
         String password = tfPassword.getText();
         String sueldo_aux = tfSueldo.getText();
-        float sueldo = Float.parseFloat(sueldo_aux);
         
         if(nombre.isEmpty() || apelidos.isEmpty() || usuario.isEmpty() || password.isEmpty() || sueldo_aux.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene que insertar los campos!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
             return;
         } 
+        
+        float sueldo = Float.parseFloat(sueldo_aux);
         
         Trabajador t = new Trabajador(nombre, apelidos, usuario, password);
         t.setSaldo(sueldo);
@@ -243,7 +244,6 @@ public class Dueno_GestionarTrabajadores extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }  
-        
         
         Trabajador t = trabajadores.get(aux);
         trabajadores.remove(aux);

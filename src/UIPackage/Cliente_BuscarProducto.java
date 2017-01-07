@@ -194,7 +194,7 @@ public class Cliente_BuscarProducto extends javax.swing.JFrame {
         
         //empresa.getFranquicias().get(id).getCompras().add(p1.get(m));
         
-        Trabajadaor_DesejaInstalacion c = new Trabajadaor_DesejaInstalacion(empresa, id, p1.get(m));
+        Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(empresa, id, p1.get(m));
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bComprarActionPerformed

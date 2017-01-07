@@ -140,7 +140,7 @@ public class Trabajador_MenuProdutosAMedida extends javax.swing.JFrame {
         float precio_nuevo = (float) (p.getPrecioVenta() + p.getPrecioVenta()*0.1);
         p.setPrecioVenta(precio_nuevo);
         
-        Trabajadaor_DesejaInstalacion c = new Trabajadaor_DesejaInstalacion(e, id, p);
+        Trabajador_DesejaInstalacion c = new Trabajador_DesejaInstalacion(e, id, p);
         c.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bValidarActionPerformed
